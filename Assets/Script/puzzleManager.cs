@@ -62,15 +62,16 @@ public class pipePuzzle_Manager : MonoBehaviour
         for (int i = 0; i < map.GetLength(1); i++) 
         {
             block.Add(new List<pipePuzzle_Block> { });
-            for (int j = 0; j < map.Length; j++)
+            for (int j = 0; j < map.GetLength(0); j++)
             {
                 GameObject b = Instantiate(blockPrefubs, puzzleB);
                 b.transform.position = 
                     new Vector3(((map.GetLength(1) / 2) + j - 1) * 1.5f, 
-                    (map.Length / 2 + i - 1) * 1.5f);
+                    (map.GetLength(0) / 2 + i - 1) * 1.5f);
                 block[i].Add(b.GetComponent<pipePuzzle_Block>());
-                b.GetComponent<Image>().sprite = Resources.Load<Sprite>($"image/block{map[j,i]}");
-                block[i][j].kind = map[j, i];
+
+                b.GetComponent<Image>().sprite = Resources.Load<Sprite>($"image/block{map[i, j]}");
+                block[i][j].kind = map[i, j];
             }
         }
     }
@@ -88,7 +89,7 @@ public class pipePuzzle_Manager : MonoBehaviour
         for (int i = 0; i < map.GetLength(1); i++)
         {
             visited.Add(new List<bool> { });
-            for (int j = 0; j < map.Length; j++)
+            for (int j = 0; j < map.GetLength(0); j++)
             {
                 visited[i].Add(false);
             }
