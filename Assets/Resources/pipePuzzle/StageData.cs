@@ -7,7 +7,7 @@ public class StageData : ScriptableObject
 {
     public int stage;
     public blockKind[] map;
-    public int[] mapSize; // 4, 6
+    public int[] mapSize; 
     public int[] start;
     public int[] end;
     

@@ -50,7 +50,7 @@ public class pipePuzzle_Manager : MonoBehaviour
 
         isClear = false;
 
-        stage = 0;
+        stage = 1;
 
         map = new blockKind[stageData[stage].mapSize[0], stageData[stage].mapSize[1]];
         for (int y = 0; y < stageData[stage].mapSize[0]; y++)
@@ -132,10 +132,11 @@ public class pipePuzzle_Manager : MonoBehaviour
             curHasPass = blocks[curPos[0], curPos[1]].GetCanGo();
 
             for (int i = 0; i < 4; i++) {
+                if (curHasPass[i] == -1) { continue; }
+
                 nextPos = new int[2] { curPos[0] + dir[curHasPass[i], 0], curPos[1] + dir[curHasPass[i], 1] };
 
-                if (curHasPass[i] != -1
-                    && nextPos[0] >= 0 && nextPos[0] < stageData[stage].mapSize[0] 
+                if (nextPos[0] >= 0 && nextPos[0] < stageData[stage].mapSize[0] 
                     && nextPos[1] >= 0 && nextPos[1] < stageData[stage].mapSize[1])
                 {
                     if (!visited[nextPos[0], nextPos[1]])
