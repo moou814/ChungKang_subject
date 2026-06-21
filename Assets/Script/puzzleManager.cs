@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.UI;
 
+public enum blockKind
+{
+    L,
+    I,
+    plus,
+    T
+};
+
 public class pipePuzzle_Manager : MonoBehaviour
 {
     static public int[,] dir = new int[,] { { 0, 1 }, { 1, 0 }, { 0, -1 }, { -1, 0 } }; // µ¿³²¼­ºÏ
@@ -18,7 +26,7 @@ public class pipePuzzle_Manager : MonoBehaviour
 
     int stage;
 
-    int[,] map;
+    blockKind[,] map;
 
     public GameObject blockPrefubs;
 
@@ -46,11 +54,11 @@ public class pipePuzzle_Manager : MonoBehaviour
         switch (stage)
         {
             case 1:
-                map = new int[,] {
-                    { 0, 1, 0, 2, 3, 1 },
-                    { 3, 2, 1, 1, 0, 0 },
-                    { 0, 0, 2, 0, 1, 3 },
-                    { 1, 3, 3, 1, 0, 0 },
+                map = new blockKind[,] {
+                    { blockKind.L, blockKind.I, blockKind.L, blockKind.plus, blockKind.T, blockKind.I },
+                    { blockKind.T, blockKind.plus, blockKind.I, blockKind.I, blockKind.L, blockKind.L },
+                    { blockKind.L, blockKind.L, blockKind.plus, blockKind.L, blockKind.I, blockKind.T },
+                    { blockKind.I, blockKind.T, blockKind.T, blockKind.I, blockKind.L, blockKind.L },
                 };
 
                 blocks = new pipePuzzle_Block[4, 6];
@@ -78,7 +86,7 @@ public class pipePuzzle_Manager : MonoBehaviour
                     (map.GetLength(1) / 2 - col -  1.5f) * 1.5f);
                 blocks[col, row] = b.GetComponent<pipePuzzle_Block>();
 
-                b.GetComponent<Image>().sprite = Resources.Load<Sprite>($"image/block{map[col, row]}");
+                b.GetComponent<Image>().sprite = Resources.Load<Sprite>($"image/block{(int)map[col, row]}");
                 blocks[col, row].kind = map[col, row];
             }
         }

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class pipePuzzle_Block : MonoBehaviour
 {
     public int angle;
-    public int kind; // 0:い, 1:-, 2:+, 3:た
+    public blockKind kind; // 0:い, 1:-, 2:+, 3:た
 
     private Image img;
 
@@ -32,9 +32,9 @@ public class pipePuzzle_Block : MonoBehaviour
 
         for (int i = 0; i < 4; i++)
         {
-            if (pipePuzzle_Manager.connetedDir[kind, i] != -1)
+            if (pipePuzzle_Manager.connetedDir[(int)kind, i] != -1)
             {
-                r[i] = (pipePuzzle_Manager.connetedDir[kind, i] + angle) % 4;
+                r[i] = (pipePuzzle_Manager.connetedDir[(int)kind, i] + angle) % 4;
             }
         }
         return r;
