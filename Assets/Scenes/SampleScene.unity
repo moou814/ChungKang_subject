@@ -569,8 +569,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::elevatorPuzzleManager
   puzzleB: {fileID: 1450579741}
   blockPrefubs: {fileID: 3017059526738483803, guid: 2ed147732efd92a49bdcfc9356264c86, type: 3}
-  startB: 
-  desB: 
   isClear: 0
 --- !u!1 &1450579740
 GameObject:

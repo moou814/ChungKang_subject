@@ -24,6 +24,7 @@ public class pipePuzzle_Manager : MonoBehaviour
 
     [SerializeField] private Transform puzzleB;
 
+    [SerializeField] private StageData[] stageData;
     int stage;
 
     blockKind[,] map;
@@ -49,25 +50,22 @@ public class pipePuzzle_Manager : MonoBehaviour
 
         isClear = false;
 
-        stage = 1;
+        stage = 0;
 
-        switch (stage)
+        map = new blockKind[stageData[stage].mapSize[0], stageData[stage].mapSize[1]];
+        for (int y = 0; y < stageData[stage].mapSize[0]; y++)
         {
-            case 1:
-                map = new blockKind[,] {
-                    { blockKind.L, blockKind.I, blockKind.L, blockKind.plus, blockKind.T, blockKind.I },
-                    { blockKind.T, blockKind.plus, blockKind.I, blockKind.I, blockKind.L, blockKind.L },
-                    { blockKind.L, blockKind.L, blockKind.plus, blockKind.L, blockKind.I, blockKind.T },
-                    { blockKind.I, blockKind.T, blockKind.T, blockKind.I, blockKind.L, blockKind.L },
-                };
-
-                blocks = new pipePuzzle_Block[4, 6];
-                visited = new bool[4, 6];
-
-                startB = new int[] { 0, 0 };
-                desB = new int[] { 3,5 };
-                break;
+            for (int x = 0; x < stageData[stage].mapSize[1]; x++)
+            {
+                map[y, x] = stageData[stage].map[y * stageData[stage].mapSize[1] + x];
+            }
         }
+
+        blocks = new pipePuzzle_Block[stageData[stage].mapSize[0], stageData[stage].mapSize[1]];
+        visited = new bool[stageData[stage].mapSize[0], stageData[stage].mapSize[1]];
+
+        startB = stageData[stage].start;
+        desB = stageData[stage].end;
        
         setupBlock();
 
@@ -86,7 +84,7 @@ public class pipePuzzle_Manager : MonoBehaviour
                     (map.GetLength(1) / 2 - col -  1.5f) * 1.5f);
                 blocks[col, row] = b.GetComponent<pipePuzzle_Block>();
 
-                b.GetComponent<Image>().sprite = Resources.Load<Sprite>($"image/block{(int)map[col, row]}");
+                b.GetComponent<Image>().sprite = Resources.Load<Sprite>($"pipePuzzle/image/block{(int)map[col, row]}");
                 blocks[col, row].kind = map[col, row];
             }
         }
