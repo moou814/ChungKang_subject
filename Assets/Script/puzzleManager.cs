@@ -25,7 +25,7 @@ public class pipePuzzle_Manager : MonoBehaviour
     int[] startB;
     int[] desB;
 
-    public List<List<pipePuzzle_Block>> block = new List<List<pipePuzzle_Block>>() { };
+    public pipePuzzle_Block[,] blocks;
 
     public bool isClear;
     public static pipePuzzle_Manager Instance { get; private set; }
@@ -53,6 +53,9 @@ public class pipePuzzle_Manager : MonoBehaviour
                     { 1, 3, 3, 1, 0, 0 },
                 };
 
+                blocks = new pipePuzzle_Block[4, 6];
+                visited = new bool[4, 6];
+
                 startB = new int[] { 0, 0 };
                 desB = new int[] { 3,5 };
                 break;
@@ -67,17 +70,16 @@ public class pipePuzzle_Manager : MonoBehaviour
     {
         for (int col = 0; col < map.GetLength(0); col++) 
         {
-            block.Add(new List<pipePuzzle_Block> { });
             for (int row = 0; row < map.GetLength(1); row++)
             {
                 GameObject b = Instantiate(blockPrefubs, puzzleB);
                 b.transform.position = 
                     new Vector3((row - (map.GetLength(0) / 2) - 0.5f) * 1.5f, 
                     (map.GetLength(1) / 2 - col -  1.5f) * 1.5f);
-                block[col].Add(b.GetComponent<pipePuzzle_Block>());
+                blocks[col, row] = b.GetComponent<pipePuzzle_Block>();
 
                 b.GetComponent<Image>().sprite = Resources.Load<Sprite>($"image/block{map[col, row]}");
-                block[col][row].kind = map[col, row];
+                blocks[col, row].kind = map[col, row];
             }
         }
     }
@@ -88,48 +90,45 @@ public class pipePuzzle_Manager : MonoBehaviour
         yield break;
     }
 
+    bool[,] visited;
     public void IsClear()
     {
         List<int[]> stack = new List<int[]>();
-        List<List<bool>> visited = new List<List<bool>> { }; 
         for (int i = 0; i < map.GetLength(0); i++)
         {
-            visited.Add(new List<bool> { });
             for (int j = 0; j < map.GetLength(1); j++)
             {
-                visited[i].Add(false);
+                visited[i, j] = false;
             }
         }
 
-        foreach (var pi in block) {
-            foreach (var pj in pi) { 
-                pj.onoffRoad(false);
-            }
+        foreach (var pj in blocks) {
+            pj.onoffRoad(false);
         }
 
         stack.Add(startB); 
-        visited[startB[0]][startB[1]] = true;
+        visited[startB[0], startB[1]] = true;
         while (stack.Count > 0) {
             int[] curPos = stack[^1];
 
             stack.RemoveAt(stack.Count - 1);
-            block[curPos[0]][curPos[1]].onoffRoad(true);
+            blocks[curPos[0], curPos[1]].onoffRoad(true);
 
-            int [] c = block[curPos[0]][curPos[1]].GetCanGo();
+            int [] c = blocks[curPos[0], curPos[1]].GetCanGo();
 
-            for (int i = 0; i < block.Count; i++) {
+            for (int i = 0; i < blocks.GetLength(0); i++) {
                 if (c[i] != -1
-                    && curPos[0] + dir[c[i], 0] >= 0 && curPos[0] + dir[c[i], 0] < block.Count &&
-                    curPos[1] + dir[c[i], 1] >= 0 && curPos[1] + dir[c[i], 1] < block[0].Count)
+                    && curPos[0] + dir[c[i], 0] >= 0 && curPos[0] + dir[c[i], 0] < blocks.GetLength(0) &&
+                    curPos[1] + dir[c[i], 1] >= 0 && curPos[1] + dir[c[i], 1] < blocks.GetLength(1))
                 {
-                    if (!visited[curPos[0] + dir[c[i], 0]][curPos[1] + dir[c[i], 1]])
+                    if (!visited[curPos[0] + dir[c[i], 0], curPos[1] + dir[c[i], 1]])
                     {
-                        foreach (var a in block[curPos[0] + dir[c[i], 0]][curPos[1] + dir[c[i], 1]].GetCanGo())
+                        foreach (var a in blocks[curPos[0] + dir[c[i], 0], curPos[1] + dir[c[i], 1]].GetCanGo())
                         {
                             if (a != -1 &&
                                 0 == dir[c[i], 0] + dir[a, 0] && 0 == dir[c[i], 1] + dir[a, 1])
                             {
-                                visited[curPos[0] + dir[c[i], 0]][curPos[1] + dir[c[i], 1]] = true;
+                                visited[curPos[0] + dir[c[i], 0], curPos[1] + dir[c[i], 1]] = true;
                                 stack.Add(new int[] { curPos[0] + dir[c[i], 0], curPos[1] + dir[c[i], 1] });
                             }
                         }
@@ -138,7 +137,7 @@ public class pipePuzzle_Manager : MonoBehaviour
             }
         }
 
-        if (visited[desB[0]][desB[1]]) {
+        if (visited[desB[0], desB[1]]) {
             isClear = true;
             StartCoroutine(clear());
         }
