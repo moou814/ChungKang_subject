@@ -69,14 +69,14 @@ public class pipePuzzle_Manager : MonoBehaviour
        
         setupBlock();
 
-        IsClear();
+        clearCheck();
     }
 
     void setupBlock()
     {
-        for (int col = 0; col < map.GetLength(0); col++) 
+        for (int col = 0; col < stageData[stage].mapSize[0]; col++) 
         {
-            for (int row = 0; row < map.GetLength(1); row++)
+            for (int row = 0; row < stageData[stage].mapSize[1]; row++)
             {
                 GameObject b = Instantiate(blockPrefubs, puzzleB);
                 b.transform.position = 
@@ -96,52 +96,65 @@ public class pipePuzzle_Manager : MonoBehaviour
         yield break;
     }
 
-    bool[,] visited;
-    public void IsClear()
+    void cellUpdate(bool[,] cell)
     {
-        List<int[]> stack = new List<int[]>();
-        for (int i = 0; i < map.GetLength(0); i++)
+        for (int col = 0; col < stageData[stage].mapSize[0]; col++)
         {
-            for (int j = 0; j < map.GetLength(1); j++)
+            for (int row = 0; row < stageData[stage].mapSize[1]; row++)
+            {
+                blocks[col, row].onoffRoad(cell[col, row]);
+            }
+        }
+    }
+
+    bool[,] visited;
+    List<int[]> stack;
+    int[] curHasPass;
+    int[] nextPos;
+    public void clearCheck()
+    { 
+        stack = new List<int[]>();
+        for (int i = 0; i < stageData[stage].mapSize[0]; i++)
+        {
+            for (int j = 0; j < stageData[stage].mapSize[1]; j++)
             {
                 visited[i, j] = false;
             }
         }
 
-        foreach (var pj in blocks) {
-            pj.onoffRoad(false);
-        }
-
         stack.Add(startB); 
         visited[startB[0], startB[1]] = true;
+
         while (stack.Count > 0) {
             int[] curPos = stack[^1];
-
             stack.RemoveAt(stack.Count - 1);
-            blocks[curPos[0], curPos[1]].onoffRoad(true);
 
-            int [] c = blocks[curPos[0], curPos[1]].GetCanGo();
+            curHasPass = blocks[curPos[0], curPos[1]].GetCanGo();
 
-            for (int i = 0; i < blocks.GetLength(0); i++) {
-                if (c[i] != -1
-                    && curPos[0] + dir[c[i], 0] >= 0 && curPos[0] + dir[c[i], 0] < blocks.GetLength(0) &&
-                    curPos[1] + dir[c[i], 1] >= 0 && curPos[1] + dir[c[i], 1] < blocks.GetLength(1))
+            for (int i = 0; i < 4; i++) {
+                nextPos = new int[2] { curPos[0] + dir[curHasPass[i], 0], curPos[1] + dir[curHasPass[i], 1] };
+
+                if (curHasPass[i] != -1
+                    && nextPos[0] >= 0 && nextPos[0] < stageData[stage].mapSize[0] 
+                    && nextPos[1] >= 0 && nextPos[1] < stageData[stage].mapSize[1])
                 {
-                    if (!visited[curPos[0] + dir[c[i], 0], curPos[1] + dir[c[i], 1]])
+                    if (!visited[nextPos[0], nextPos[1]])
                     {
-                        foreach (var hasPass in blocks[curPos[0] + dir[c[i], 0], curPos[1] + dir[c[i], 1]].GetCanGo())
+                        foreach (var hasPass in blocks[nextPos[0], nextPos[1]].GetCanGo())
                         {
                             if (hasPass != -1 &&
-                                0 == dir[c[i], 0] + dir[hasPass, 0] && 0 == dir[c[i], 1] + dir[hasPass, 1])
+                                0 == dir[curHasPass[i], 0] + dir[hasPass, 0] && 0 == dir[curHasPass[i], 1] + dir[hasPass, 1])
                             {
-                                visited[curPos[0] + dir[c[i], 0], curPos[1] + dir[c[i], 1]] = true;
-                                stack.Add(new int[] { curPos[0] + dir[c[i], 0], curPos[1] + dir[c[i], 1] });
+                                visited[nextPos[0], nextPos[1]] = true;
+                                stack.Add(new int[] { nextPos[0], nextPos[1] });
                             }
                         }
                     }
                 }
             }
         }
+
+        cellUpdate(visited);
 
         if (visited[desB[0], desB[1]]) {
             isClear = true;

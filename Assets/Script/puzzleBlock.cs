@@ -18,7 +18,7 @@ public class pipePuzzle_Block : MonoBehaviour
         angle = (angle + 1) % 4;
         transform.Rotate(new Vector3(0, 0, -90));
 
-        pipePuzzle_Manager.Instance.IsClear();
+        pipePuzzle_Manager.Instance.clearCheck();
     }
 
     public void onoffRoad(bool isOn)
