@@ -14,7 +14,7 @@ public class pipePuzzle_Manager : MonoBehaviour
             { 1, 2, 3, -1 }
         };
 
-    Transform puzzleB;
+    public Transform puzzleB;
 
     int stage;
 
@@ -22,8 +22,8 @@ public class pipePuzzle_Manager : MonoBehaviour
 
     public GameObject blockPrefubs;
 
-    public int[] startB;
-    public int[] desB;
+    int[] startB;
+    int[] desB;
 
     public List<List<pipePuzzle_Block>> block = new List<List<pipePuzzle_Block>>() { };
 
@@ -38,9 +38,6 @@ public class pipePuzzle_Manager : MonoBehaviour
         }
 
         Instance = this;
-
-
-        puzzleB = GameObject.Find("pipePuzzle_block").transform;
 
         isClear = false;
 
@@ -75,7 +72,7 @@ public class pipePuzzle_Manager : MonoBehaviour
             {
                 GameObject b = Instantiate(blockPrefubs, puzzleB);
                 b.transform.position = 
-                    new Vector3((row - (map.GetLength(0) / 2) + 1.5f) * 1.5f, 
+                    new Vector3((row - (map.GetLength(0) / 2) - 0.5f) * 1.5f, 
                     (map.GetLength(1) / 2 - col -  1.5f) * 1.5f);
                 block[col].Add(b.GetComponent<pipePuzzle_Block>());
 
@@ -114,6 +111,13 @@ public class pipePuzzle_Manager : MonoBehaviour
         while (stack.Count > 0) {
             int[] curPos = stack[^1];
 
+            string log = "";
+            foreach (var i in stack)
+            {
+                log += $"[{i[0]}, {i[1]}], ";
+            }
+            Debug.Log(log);
+
             visited[curPos[0]][curPos[1]] = true;
             stack.RemoveAt(stack.Count - 1);
             block[curPos[0]][curPos[1]].onoffRoad(true);
@@ -141,6 +145,7 @@ public class pipePuzzle_Manager : MonoBehaviour
         }
 
         if (visited[desB[0]][desB[1]]) {
+            isClear = true;
             StartCoroutine(clear());
         }
 

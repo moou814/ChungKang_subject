@@ -6,6 +6,13 @@ public class pipePuzzle_Block : MonoBehaviour
     public int angle;
     public int kind; // 0:¤¤, 1:-, 2:+, 3:¤¿
 
+    private Image img;
+
+    private void Awake()
+    {
+        img = GetComponent<Image>();
+    }
+
     public void turn()
     {
         angle = (angle + 1) % 4;
@@ -16,7 +23,7 @@ public class pipePuzzle_Block : MonoBehaviour
 
     public void onoffRoad(bool isOn)
     {
-        GetComponent<Image>().color = isOn ? Color.white : Color.gray;
+        img.color = isOn ? Color.white : Color.gray;
     }
 
     public int[] GetCanGo()
