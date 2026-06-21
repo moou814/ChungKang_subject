@@ -22,13 +22,13 @@ public class pipePuzzle_Manager : MonoBehaviour
             { 1, 2, 3, -1 }
         };
 
-    public Transform puzzleB;
+    [SerializeField] private Transform puzzleB;
 
     int stage;
 
     blockKind[,] map;
 
-    public GameObject blockPrefubs;
+    [SerializeField] private GameObject blockPrefubs;
 
     int[] startB;
     int[] desB;
