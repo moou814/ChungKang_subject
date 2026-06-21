@@ -88,6 +88,9 @@ public class pipePuzzle_Manager : MonoBehaviour
                 blocks[col, row].kind = map[col, row];
             }
         }
+
+        blocks[startB[0], startB[1]].itFixed = true;
+        blocks[desB[0], desB[1]].itFixed = true;
     }
 
     IEnumerator clear()
@@ -162,6 +165,6 @@ public class pipePuzzle_Manager : MonoBehaviour
             StartCoroutine(clear());
         }
 
-        return; // yield break;
+        return;
     }
 }

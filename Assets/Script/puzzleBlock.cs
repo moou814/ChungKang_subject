@@ -8,6 +8,8 @@ public class pipePuzzle_Block : MonoBehaviour
 
     private Image img;
 
+    public bool itFixed;
+
     private void Awake()
     {
         img = GetComponent<Image>();
@@ -15,6 +17,8 @@ public class pipePuzzle_Block : MonoBehaviour
 
     public void turn()
     {
+        if (itFixed) return;
+
         angle = (angle + 1) % 4;
         transform.Rotate(new Vector3(0, 0, -90));
 
