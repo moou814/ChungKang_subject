@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class elevatorPuzzlePiece : MonoBehaviour
+public class pipePuzzle_Block : MonoBehaviour
 {
-    public elevatorPuzzleManager pManager;
+    public pipePuzzle_Manager pManager;
 
     public int angle;
     public int kind; // 0:¤¤, 1:-, 2:+, 3:¤¿
@@ -27,9 +27,9 @@ public class elevatorPuzzlePiece : MonoBehaviour
 
         for (int i = 0; i < 4; i++)
         {
-            if (elevatorPuzzleManager.connetedDir[kind, i] != -1)
+            if (pipePuzzle_Manager.connetedDir[kind, i] != -1)
             {
-                r[i] = (elevatorPuzzleManager.connetedDir[kind, i] + angle) % 4;
+                r[i] = (pipePuzzle_Manager.connetedDir[kind, i] + angle) % 4;
             }
         }
         return r;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.UI;
 
-public class elevatorPuzzleManager : MonoBehaviour
+public class pipePuzzle_Manager : MonoBehaviour
 {
     static public int[,] dir = new int[,] { { 0, 1 }, { 1, 0 }, { 0, -1 }, { -1, 0 } }; // µ¿³²¼­ºÏ
     // 0:¤¤, 1:-, 2:+, 3:¤¿
@@ -25,7 +25,7 @@ public class elevatorPuzzleManager : MonoBehaviour
     public int[] startB;
     public int[] desB;
 
-    public List<List<elevatorPuzzlePiece>> pieces = new List<List<elevatorPuzzlePiece>>() { };
+    public List<List<pipePuzzle_Block>> block = new List<List<pipePuzzle_Block>>() { };
 
     public bool isClear;
 
@@ -61,16 +61,16 @@ public class elevatorPuzzleManager : MonoBehaviour
     {
         for (int i = 0; i < map.GetLength(1); i++) 
         {
-            pieces.Add(new List<elevatorPuzzlePiece> { });
+            block.Add(new List<pipePuzzle_Block> { });
             for (int j = 0; j < map.Length; j++)
             {
                 GameObject b = Instantiate(blockPrefubs, puzzleB);
                 b.transform.position = 
                     new Vector3(((map.GetLength(1) / 2) + j - 1) * 1.5f, 
                     (map.Length / 2 + i - 1) * 1.5f);
-                pieces[i].Add(b.GetComponent<elevatorPuzzlePiece>());
+                block[i].Add(b.GetComponent<pipePuzzle_Block>());
                 b.GetComponent<Image>().sprite = Resources.Load<Sprite>($"image/block{map[j,i]}");
-                pieces[i][j].kind = map[j, i];
+                block[i][j].kind = map[j, i];
             }
         }
     }
@@ -84,9 +84,17 @@ public class elevatorPuzzleManager : MonoBehaviour
     public void IsClear()
     {
         List<int[]> stack = new List<int[]>();
-        bool[,] visited = new bool[,] { };
+        List<List<bool>> visited = new List<List<bool>> { }; 
+        for (int i = 0; i < map.GetLength(1); i++)
+        {
+            visited.Add(new List<bool> { });
+            for (int j = 0; j < map.Length; j++)
+            {
+                visited[i].Add(false);
+            }
+        }
 
-        foreach (var pi in pieces) {
+        foreach (var pi in block) {
             foreach (var pj in pi) { 
                 pj.onoffRoad(false);
             }
@@ -95,21 +103,21 @@ public class elevatorPuzzleManager : MonoBehaviour
         stack.Add(startB);
         while (stack.Count > 0) {
             int[] curPos = stack[^1];
+
+            visited[curPos[0]][curPos[1]] = true;
             stack.RemoveAt(stack.Count - 1);
+            block[curPos[0]][curPos[1]].onoffRoad(true);
 
-            visited[curPos[0], curPos[1]] = true;
-            pieces[curPos[0]][curPos[1]].onoffRoad(true);
+            int [] c = block[curPos[0]][curPos[1]].GetCanGo();
 
-            int [] c = pieces[curPos[0]][curPos[1]].GetCanGo();
-
-            for (int i = 0; i < pieces.Count; i++) {
+            for (int i = 0; i < block.Count; i++) {
                 if (c[i] != -1
-                    && curPos[0] + dir[c[i], 0] >= 0 && curPos[0] + dir[c[i], 0] < pieces.Count &&
-                    curPos[1] + dir[c[i], 1] >= 0 && curPos[1] + dir[c[i], 1] < pieces[0].Count)
+                    && curPos[0] + dir[c[i], 0] >= 0 && curPos[0] + dir[c[i], 0] < block.Count &&
+                    curPos[1] + dir[c[i], 1] >= 0 && curPos[1] + dir[c[i], 1] < block[0].Count)
                 {
-                    if (!visited[curPos[0] + dir[c[i], 0], curPos[1] + dir[c[i], 1]])
+                    if (!visited[curPos[0] + dir[c[i], 0]][curPos[1] + dir[c[i], 1]])
                     {
-                        foreach (var a in pieces[curPos[0] + dir[c[i], 0]][curPos[1] + dir[c[i], 1]].GetCanGo())
+                        foreach (var a in block[curPos[0] + dir[c[i], 0]][curPos[1] + dir[c[i], 1]].GetCanGo())
                         {
                             if (a != -1 &&
                                 0 == dir[c[i], 0] + dir[a, 0] && 0 == dir[c[i], 1] + dir[a, 1])
@@ -118,12 +126,11 @@ public class elevatorPuzzleManager : MonoBehaviour
                             }
                         }
                     }
-                 
                 }
             }
         }
 
-        if (visited[desB[0], desB[1]]) {
+        if (visited[desB[0]][desB[1]]) {
             StartCoroutine(clear());
         }
 
