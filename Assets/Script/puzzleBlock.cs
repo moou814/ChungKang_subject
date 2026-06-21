@@ -25,10 +25,10 @@ public class pipePuzzle_Block : MonoBehaviour
     {
         img.color = isOn ? Color.white : Color.gray;
     }
-
+    int[] r;
     public int[] GetCanGo()
     {
-        int[] r = new int[] { -1, -1, -1,-1 };
+        r = new int[] { -1, -1, -1, -1 };
 
         for (int i = 0; i < 4; i++)
         {

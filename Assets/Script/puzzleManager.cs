@@ -49,8 +49,8 @@ public class pipePuzzle_Manager : MonoBehaviour
                 map = new int[,] {
                     { 0, 1, 0, 2, 3, 1 },
                     { 3, 2, 1, 1, 0, 0 },
-                    { 3, 3, 2, 0, 1, 2 },
-                    { 2, 2, 3, 1, 0, 0 },
+                    { 0, 0, 2, 0, 1, 3 },
+                    { 1, 3, 3, 1, 0, 0 },
                 };
 
                 startB = new int[] { 0, 0 };
@@ -107,18 +107,11 @@ public class pipePuzzle_Manager : MonoBehaviour
             }
         }
 
-        stack.Add(startB);
+        stack.Add(startB); 
+        visited[startB[0]][startB[1]] = true;
         while (stack.Count > 0) {
             int[] curPos = stack[^1];
 
-            string log = "";
-            foreach (var i in stack)
-            {
-                log += $"[{i[0]}, {i[1]}], ";
-            }
-            Debug.Log(log);
-
-            visited[curPos[0]][curPos[1]] = true;
             stack.RemoveAt(stack.Count - 1);
             block[curPos[0]][curPos[1]].onoffRoad(true);
 
@@ -136,6 +129,7 @@ public class pipePuzzle_Manager : MonoBehaviour
                             if (a != -1 &&
                                 0 == dir[c[i], 0] + dir[a, 0] && 0 == dir[c[i], 1] + dir[a, 1])
                             {
+                                visited[curPos[0] + dir[c[i], 0]][curPos[1] + dir[c[i], 1]] = true;
                                 stack.Add(new int[] { curPos[0] + dir[c[i], 0], curPos[1] + dir[c[i], 1] });
                             }
                         }
