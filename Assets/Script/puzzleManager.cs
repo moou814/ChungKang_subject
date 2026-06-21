@@ -28,9 +28,18 @@ public class pipePuzzle_Manager : MonoBehaviour
     public List<List<pipePuzzle_Block>> block = new List<List<pipePuzzle_Block>>() { };
 
     public bool isClear;
-
+    public static pipePuzzle_Manager Instance { get; private set; }
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
+
         puzzleB = GameObject.Find("pipePuzzle_block").transform;
 
         isClear = false;
@@ -48,7 +57,7 @@ public class pipePuzzle_Manager : MonoBehaviour
                 };
 
                 startB = new int[] { 0, 0 };
-                desB = new int[] { 6, 4 };
+                desB = new int[] { 3,5 };
                 break;
         }
        
@@ -59,19 +68,19 @@ public class pipePuzzle_Manager : MonoBehaviour
 
     void setupBlock()
     {
-        for (int i = 0; i < map.GetLength(1); i++) 
+        for (int col = 0; col < map.GetLength(0); col++) 
         {
             block.Add(new List<pipePuzzle_Block> { });
-            for (int j = 0; j < map.GetLength(0); j++)
+            for (int row = 0; row < map.GetLength(1); row++)
             {
                 GameObject b = Instantiate(blockPrefubs, puzzleB);
                 b.transform.position = 
-                    new Vector3(((map.GetLength(1) / 2) + j - 1) * 1.5f, 
-                    (map.GetLength(0) / 2 + i - 1) * 1.5f);
-                block[i].Add(b.GetComponent<pipePuzzle_Block>());
+                    new Vector3((row - (map.GetLength(0) / 2) + 1.5f) * 1.5f, 
+                    (map.GetLength(1) / 2 - col -  1.5f) * 1.5f);
+                block[col].Add(b.GetComponent<pipePuzzle_Block>());
 
-                b.GetComponent<Image>().sprite = Resources.Load<Sprite>($"image/block{map[i, j]}");
-                block[i][j].kind = map[i, j];
+                b.GetComponent<Image>().sprite = Resources.Load<Sprite>($"image/block{map[col, row]}");
+                block[col][row].kind = map[col, row];
             }
         }
     }
@@ -86,10 +95,10 @@ public class pipePuzzle_Manager : MonoBehaviour
     {
         List<int[]> stack = new List<int[]>();
         List<List<bool>> visited = new List<List<bool>> { }; 
-        for (int i = 0; i < map.GetLength(1); i++)
+        for (int i = 0; i < map.GetLength(0); i++)
         {
             visited.Add(new List<bool> { });
-            for (int j = 0; j < map.GetLength(0); j++)
+            for (int j = 0; j < map.GetLength(1); j++)
             {
                 visited[i].Add(false);
             }

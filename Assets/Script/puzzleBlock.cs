@@ -3,8 +3,6 @@ using UnityEngine.UI;
 
 public class pipePuzzle_Block : MonoBehaviour
 {
-    public pipePuzzle_Manager pManager;
-
     public int angle;
     public int kind; // 0:¤¤, 1:-, 2:+, 3:¤¿
 
@@ -13,7 +11,7 @@ public class pipePuzzle_Block : MonoBehaviour
         angle = (angle + 1) % 4;
         transform.Rotate(new Vector3(0, 0, -90));
 
-        pManager.IsClear();
+        pipePuzzle_Manager.Instance.IsClear();
     }
 
     public void onoffRoad(bool isOn)
