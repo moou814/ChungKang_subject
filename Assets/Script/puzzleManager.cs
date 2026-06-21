@@ -129,10 +129,10 @@ public class pipePuzzle_Manager : MonoBehaviour
                 {
                     if (!visited[curPos[0] + dir[c[i], 0], curPos[1] + dir[c[i], 1]])
                     {
-                        foreach (var a in blocks[curPos[0] + dir[c[i], 0], curPos[1] + dir[c[i], 1]].GetCanGo())
+                        foreach (var hasPass in blocks[curPos[0] + dir[c[i], 0], curPos[1] + dir[c[i], 1]].GetCanGo())
                         {
-                            if (a != -1 &&
-                                0 == dir[c[i], 0] + dir[a, 0] && 0 == dir[c[i], 1] + dir[a, 1])
+                            if (hasPass != -1 &&
+                                0 == dir[c[i], 0] + dir[hasPass, 0] && 0 == dir[c[i], 1] + dir[hasPass, 1])
                             {
                                 visited[curPos[0] + dir[c[i], 0], curPos[1] + dir[c[i], 1]] = true;
                                 stack.Add(new int[] { curPos[0] + dir[c[i], 0], curPos[1] + dir[c[i], 1] });
