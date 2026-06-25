@@ -5,9 +5,19 @@ public class BitMaskPuzzle : MonoBehaviour
     int curState;
     int[] switchs;
 
-    
-    void Start()
+    GameObject[] lights;
+    public static BitMaskPuzzle Instance { get; private set; }
+    private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
+        // stage make
         
     }
 
@@ -20,7 +30,7 @@ public class BitMaskPuzzle : MonoBehaviour
 
     void lampUpdate()
     {
-        for (int i = 0; i < lightCount; i++)
+        for (int i = 0; i < lights.Length; i++)
         {
             bool on = (curState & (1 << i)) != 0;
 
