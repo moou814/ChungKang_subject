@@ -721,8 +721,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96171456f6cdfa048a3e35e2ca1d5af6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BitMaskPuzzle
-  switchPrefub: {fileID: 6630609620949632668, guid: c6d296ce4ab6e264b9990d3f8397734f, type: 3}
-  lightPrefub: {fileID: 8665856222706799524, guid: 362bba7c8b46257498de3cd06a80c8d7, type: 3}
+  switchPrefab: {fileID: 6630609620949632668, guid: c6d296ce4ab6e264b9990d3f8397734f, type: 3}
+  lightPrefab: {fileID: 8665856222706799524, guid: 362bba7c8b46257498de3cd06a80c8d7, type: 3}
+  puzzleB: {fileID: 71271957}
+  stageData:
+  - {fileID: 11400000, guid: 69aa699ae7e1f3648812536092745214, type: 2}
+  - {fileID: 11400000, guid: 900a27dde1070f64dbe69c43bc80dbd0, type: 2}
+  - {fileID: 11400000, guid: 6771bbf48fae7e545a0a056b25aafab9, type: 2}
 --- !u!1 &861837225
 GameObject:
   m_ObjectHideFlags: 0
@@ -771,7 +776,7 @@ MonoBehaviour:
   stageData:
   - {fileID: 0}
   - {fileID: 11400000, guid: 9c8a10296caa33042aaae8cbda14b52c, type: 2}
-  blockPrefubs: {fileID: 3017059526738483803, guid: 2ed147732efd92a49bdcfc9356264c86, type: 3}
+  blockPrefabs: {fileID: 0}
   isClear: 0
 --- !u!1 &1450579740
 GameObject:

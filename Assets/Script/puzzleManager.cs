@@ -52,7 +52,7 @@ public class pipePuzzle_Manager : MonoBehaviour
 
         isClear = false;
 
-        stage = 1;
+        // stage = 1;
 
         map = new blockKind[stageData[stage].mapSize[0], stageData[stage].mapSize[1]];
         for (int y = 0; y < stageData[stage].mapSize[0]; y++)
