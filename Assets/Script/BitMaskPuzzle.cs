@@ -1,11 +1,15 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BitMaskPuzzle : MonoBehaviour
 {
+    public GameObject switchPrefub;
+    public GameObject lightPrefub;
+
     int curState;
     int[] switchs;
 
-    GameObject[] lights;
+    Image [] lights;
     public static BitMaskPuzzle Instance { get; private set; }
     private void Awake()
     {
@@ -21,9 +25,19 @@ public class BitMaskPuzzle : MonoBehaviour
         
     }
 
-    public void interSwitch(int idx)
+    public void interSwitch(int idx, int tp)
     {
-        curState ^= switchs[idx];
+        switch (tp)
+        {
+            case 0: // xor
+                curState ^= switchs[idx]; break;
+
+            case 1: // or
+                curState |= switchs[idx]; break;
+
+            case 2: // and
+                curState &= switchs[idx]; break;
+        }
 
         lampUpdate();
     }
@@ -34,7 +48,7 @@ public class BitMaskPuzzle : MonoBehaviour
         {
             bool on = (curState & (1 << i)) != 0;
 
-            lights[i].SetActive(on);
+            lights[i].color = on ? Color.red : Color.green;
         }
     }
 

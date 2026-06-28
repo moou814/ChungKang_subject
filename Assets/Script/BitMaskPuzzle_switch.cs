@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class BitMaskPuzzle_switch : MonoBehaviour
 {
-    [SerializeField]
-    private int switchNum;
+    public int switchNum;
+    [SerializeField] private int type;
     
-    void onoff()
+    public void onoff()
     {
-        BitMaskPuzzle.Instance.interSwitch(switchNum);
+        BitMaskPuzzle.Instance.interSwitch(switchNum, type);
     }
 }
