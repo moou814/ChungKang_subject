@@ -10,5 +10,5 @@ public class StageData : ScriptableObject
     public int[] mapSize; 
     public int[] start;
     public int[] end;
-    
+    public int[] fixedBlocks;
 }

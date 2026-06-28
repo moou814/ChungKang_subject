@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class BitMaskPuzzle : MonoBehaviour
 {
-    public GameObject switchPrefub;
-    public GameObject lightPrefub;
+    public GameObject switchPrefab;
+    public GameObject lightPrefab;
 
     int curState;
     int[] switchs;

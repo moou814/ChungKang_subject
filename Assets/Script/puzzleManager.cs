@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.UI;
+using System.Linq;
 
 public enum blockKind
 {
@@ -29,10 +30,11 @@ public class pipePuzzle_Manager : MonoBehaviour
 
     blockKind[,] map;
 
-    [SerializeField] private GameObject blockPrefubs;
+    [SerializeField] private GameObject blockPrefabs;
 
     int[] startB;
-    int[] desB;
+    int[,] desB;
+    int[,] fixedB;
 
     public pipePuzzle_Block[,] blocks;
 
@@ -65,8 +67,18 @@ public class pipePuzzle_Manager : MonoBehaviour
         visited = new bool[stageData[stage].mapSize[0], stageData[stage].mapSize[1]];
 
         startB = stageData[stage].start;
-        desB = stageData[stage].end;
-       
+        for (int i = 0; i < (int)(stageData[stage].end.Length / 2); i++)
+        {
+            desB[i, 0] = stageData[stage].end[i * 2 - 1];
+            desB[i, 1] = stageData[stage].end[i * 2];
+        }
+
+        for (int i = 0; i < (int)(stageData[stage].fixedBlocks.Length / 2); i++)
+        {
+            fixedB[i, 0] = stageData[stage].fixedBlocks[i * 2 - 1];
+            fixedB[i, 1] = stageData[stage].fixedBlocks[i * 2];
+        }
+
         setupBlock();
 
         clearCheck();
@@ -78,7 +90,7 @@ public class pipePuzzle_Manager : MonoBehaviour
         {
             for (int row = 0; row < stageData[stage].mapSize[1]; row++)
             {
-                GameObject b = Instantiate(blockPrefubs, puzzleB);
+                GameObject b = Instantiate(blockPrefabs, puzzleB);
                 b.transform.position = 
                     new Vector3((row - (map.GetLength(0) / 2) - 0.5f) * 1.5f, 
                     (map.GetLength(1) / 2 - col -  1.5f) * 1.5f);
@@ -90,7 +102,8 @@ public class pipePuzzle_Manager : MonoBehaviour
         }
 
         blocks[startB[0], startB[1]].itFixed = true;
-        blocks[desB[0], desB[1]].itFixed = true;
+        for (int i = 0; i < desB.GetLength(0); i++) { blocks[desB[i, 0], desB[i, 1]].itFixed = true; }
+        for (int i = 0; i < fixedB.Length; i++) { blocks[fixedB[i, 0], fixedB[i, 1]].itFixed = true; }
     }
 
     IEnumerator clear()
@@ -160,7 +173,16 @@ public class pipePuzzle_Manager : MonoBehaviour
 
         cellUpdate(visited);
 
-        if (visited[desB[0], desB[1]]) {
+        bool f = true;
+        for(int i = 0; i < desB.GetLength(0); i++)
+        {
+            if (visited[desB[i, 0], desB[i, 1]]) { 
+                f = false; 
+                break;
+            }
+        }
+
+        if (f) {
             isClear = true;
             StartCoroutine(clear());
         }
