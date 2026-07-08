@@ -75,7 +75,7 @@ public class pipePuzzle_Manager : MonoBehaviour
         startB = stageData[stage].start;
         desB = new int[(int)(stageData[stage].end.Length / 2), 2];
 
-        if (stageData[stage].fixedBlocks.Length > 1) 
+        if (stageData[stage].fixedBlocks != null) 
             fixedB = new int[(int)(stageData[stage].fixedBlocks.Length / 2), 2];
 
         for (int i = 0; i < (int)(stageData[stage].end.Length / 2); i++)
@@ -84,7 +84,7 @@ public class pipePuzzle_Manager : MonoBehaviour
             desB[i, 1] = stageData[stage].end[i * 2 + 1];
         }
 
-        if (stageData[stage].fixedBlocks.Length > 1)
+        if (stageData[stage].fixedBlocks != null)
         {
             for (int i = 0; i < (int)(stageData[stage].fixedBlocks.Length / 2); i++)
             {
@@ -115,7 +115,7 @@ public class pipePuzzle_Manager : MonoBehaviour
         blocks[startB[0], startB[1]].itFixed = true;
         for (int i = 0; i < desB.GetLength(0); i++) { blocks[desB[i, 0], desB[i, 1]].itFixed = true; }
 
-        if (stageData[stage].fixedBlocks.Length > 1) 
+        if (stageData[stage].fixedBlocks != null) 
             for (int i = 0; i < fixedB.Length; i++) { blocks[fixedB[i, 0], fixedB[i, 1]].itFixed = true; }
     }
 

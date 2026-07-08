@@ -6,6 +6,9 @@ public class FlowManager : MonoBehaviour
 {
     public static FlowManager Instance { get; private set; }
 
+    bool[] IsPuzzleClear = new bool[3] { false, false, false };
+    bool[] IsStageClear = new bool[3] { false, false, false };
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -32,25 +35,50 @@ public class FlowManager : MonoBehaviour
         debugerText.text += "\n" + context;
     }
 
+    public void GoPuzzle(int puzzle)
+    {
+        if (IsPuzzleClear[puzzle]) return;
 
-    string curScene = "";
+        RequestScene(puzzle);
+    }
+
+    [SerializeField] GameObject selectPanel_stage;
+    public void selectStage(int _stage)
+    {
+        stage = _stage;
+        selectPanel_stage.SetActive(false);
+        selectPanel_puzzle.SetActive(true);
+    }
+
+    int curSceneNum = 3;
     public int stage;
-    public void RequestScene(string newScene)
+    static string[] Scenes = new string[]
+    {
+        "PipeScene",
+        "BitMaskScene",
+        "MirrorScene",
+        "MainScene"
+    };
+    public void RequestScene(int newSceneNum)
     {
         clearPanel.SetActive(false);
-        selectPanel.SetActive(false);
+        selectPanel_puzzle.SetActive(newSceneNum == 3? true : false);
 
-        curScene = newScene;
+        curSceneNum = newSceneNum;
 
-        SceneManager.LoadScene(newScene, LoadSceneMode.Single);
+        SceneManager.LoadScene(Scenes[newSceneNum], LoadSceneMode.Single);
 
     }
 
     [SerializeField] GameObject clearPanel;
-    [SerializeField] GameObject selectPanel;
+    [SerializeField] GameObject selectPanel_puzzle;
     public void Clear()
     {
+        IsPuzzleClear[curSceneNum] = true;
         clearPanel.SetActive(true);
+
+        if (IsPuzzleClear[0] && IsPuzzleClear[1] && IsPuzzleClear[2]) 
+            IsStageClear[stage] = true;
     }
 
     private void Update()

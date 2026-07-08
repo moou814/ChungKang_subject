@@ -18,5 +18,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MirrorScene.unity
     guid: 9b39ff67d5157fc4c9d1494988eae15f
   m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 0a351d2d5a94f244ca0690fe91486683, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

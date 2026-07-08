@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.GraphicsBuffer;
@@ -19,9 +20,9 @@ public class BitMaskPuzzle : MonoBehaviour
     [SerializeField] private Transform puzzleB;
 
     uint curState;
-    uint[] switchs;
+    uint[] switchs = new uint[4];
 
-    Image [] lights;
+    Image[] lights = new Image[5];
 
     [SerializeField] private bitMaskData[] stageData;
     public int stage;
@@ -47,9 +48,9 @@ public class BitMaskPuzzle : MonoBehaviour
 
         // stage make
         for (int j = 0; j < (int)(stageData[stage].switchInfo.Length / 5); j++) {
-            GameObject s = Instantiate(switchPrefab);
+            GameObject s = Instantiate(switchPrefab, puzzleB);
 
-            s.transform.position = new Vector3((j - (stageData[stage].switchInfo.Length / 5 / 2) - 0.8f) * 2.4f, 2);
+            s.transform.position = new Vector3((j - (stageData[stage].switchInfo.Length / 5 / 2) - 0.8f) * 2.4f, -2);
             s.GetComponent<BitMaskPuzzle_switch>().switchNum = j;
             s.GetComponent<BitMaskPuzzle_switch>().type = stageData[stage].switchType[j];
 
@@ -57,7 +58,7 @@ public class BitMaskPuzzle : MonoBehaviour
 
             for (int i = 0; i < 5; i++)
             {
-                if (stageData[stage].switchInfo[i]) {
+                if (stageData[stage].switchInfo[i + j * 5]) {
                     switchs[j] |= (1u << i); }
             }
         }
@@ -66,7 +67,7 @@ public class BitMaskPuzzle : MonoBehaviour
         {
             GameObject l = Instantiate(lightPrefab, puzzleB);
 
-            l.transform.position = new Vector3((i - (stageData[stage].switchInfo.Length / 5 / 2) - 0.5f) * 2.4f, -2);
+            l.transform.position = new Vector3((i - (stageData[stage].switchInfo.Length / 5 / 2) - 0.5f) * 2.4f, 2);
             lights[i] = l.GetComponent<Image>();
         }
 
@@ -95,16 +96,17 @@ public class BitMaskPuzzle : MonoBehaviour
         lampUpdate();
     }
 
+    bool on;
     void lampUpdate()
     {
         bool f = true;
 
         for (int i = 0; i < lights.Length; i++)
         {
-            bool on = (curState & (1 << i)) != 0;
+            on = (curState & (1 << i)) != 0;
 
             lights[i].color = on ? Color.black : Color.yellow;
-            if (!on) f = false;
+            if (on) f = false;
         }
 
         if (f)
