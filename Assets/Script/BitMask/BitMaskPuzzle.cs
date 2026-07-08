@@ -1,9 +1,6 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.GraphicsBuffer;
-using static UnityEngine.Rendering.DebugUI.Table;
 
 public enum switchType
 {
@@ -96,20 +93,18 @@ public class BitMaskPuzzle : MonoBehaviour
         lampUpdate();
     }
 
-    bool on;
     void lampUpdate()
     {
-        bool f = true;
-
+        bool cleared = true;
         for (int i = 0; i < lights.Length; i++)
         {
-            on = (curState & (1 << i)) != 0;
+            bool on = (curState & (1u << i)) != 0;
+            lights[i].color = on ? Color.yellow : Color.black;   // ÄÑÁü = ³ë¶û
 
-            lights[i].color = on ? Color.black : Color.yellow;
-            if (on) f = false;
+            if (on != true) cleared = false;
         }
 
-        if (f)
+        if (cleared)
         {
             FlowManager.Instance.WriteLog("Clear");
             FlowManager.Instance.Clear();

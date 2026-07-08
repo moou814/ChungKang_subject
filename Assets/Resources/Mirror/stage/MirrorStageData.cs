@@ -1,5 +1,4 @@
 using UnityEngine;
-using static Unity.Collections.AllocatorManager;
 
 [CreateAssetMenu(fileName = "MirrorStageData", menuName = "Scriptable Objects/MirrorStageData")]
 

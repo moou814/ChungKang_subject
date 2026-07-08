@@ -1,8 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.Collections;
 using UnityEngine.UI;
-using System.Linq;
 
 public enum blockKind
 {
@@ -103,8 +101,8 @@ public class pipePuzzle_Manager : MonoBehaviour
             {
                 GameObject b = Instantiate(blockPrefabs, puzzleB);
                 b.transform.position = 
-                    new Vector3((row - (map.GetLength(0) / 2) - 0.5f) * 1.5f, 
-                    (map.GetLength(1) / 2 - col -  1.5f) * 1.5f);
+                    new Vector3((row - (stageData[stage].mapSize[1] / 2) - 0.5f) * 1.5f, 
+                    (stageData[stage].mapSize[0] / 2 - col -  1.5f) * 1.5f);
                 blocks[col, row] = b.GetComponent<pipePuzzle_Block>();
 
                 b.GetComponent<Image>().sprite = Resources.Load<Sprite>($"pipePuzzle/image/block{(int)map[col, row]}");
@@ -116,7 +114,7 @@ public class pipePuzzle_Manager : MonoBehaviour
         for (int i = 0; i < desB.GetLength(0); i++) { blocks[desB[i, 0], desB[i, 1]].itFixed = true; }
 
         if (stageData[stage].fixedBlocks != null) 
-            for (int i = 0; i < fixedB.Length; i++) { blocks[fixedB[i, 0], fixedB[i, 1]].itFixed = true; }
+            for (int i = 0; i < fixedB.GetLength(0); i++) { blocks[fixedB[i, 0], fixedB[i, 1]].itFixed = true; }
     }
 
     void cellUpdate(bool[,] cell)

@@ -1,9 +1,5 @@
-using Unity.VisualScripting;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.LightTransport;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class RayLine
 {
@@ -16,51 +12,50 @@ public class RayLine
     List<Vector2> points = new List<Vector2>();
 
     public void calculateWay()
+{
+    points.Clear();
+    points.Add(startPoint);
+
+    curDir = startDir.normalized;
+    curPoint = startPoint;
+
+    for (int i = 0; i < 20; i++)
     {
-        points.Clear();
-        points.Add(startPoint);
+        RaycastHit2D hit = Physics2D.Raycast(curPoint, curDir, 20f);
 
-        curDir = startDir;
-        curPoint = startPoint;
-
-        for (int i = 0; i < 20; i++)
+        if (hit)
         {
-            Ray ray = new Ray(curPoint, curDir);
-            RaycastHit2D hit = Physics2D.Raycast(curPoint, curDir, 20f);
-            Debug.DrawRay(curPoint, curDir.normalized * 20f, Color.red, 1f);
-            if (hit)
+            FlowManager.Instance.WriteLog($"Hit {i}: {hit.collider.name} | tag: {hit.collider.tag} | distance: {hit.distance} | point: {hit.point}");
+
+            points.Add(hit.point);
+
+            if (hit.collider.CompareTag("Target"))
             {
-                if (hit.transform != null)
-                    points.Add(hit.point);
-
-                if (hit.collider.CompareTag("Target"))
-                {
-                    FlowManager.Instance.Clear();
-                    break;
-                }
-
-                else if (hit.collider.CompareTag("Boundary"))
-                {
-                    break;
-                }
-
-                else if (hit.collider.CompareTag("Mirror"))
-                {
-                    Mirror hitM = hit.transform.GetComponent<Mirror>();
-
-                    curDir = hitM.calculateReflexDgree(curDir); 
-                    curPoint = hit.point + curDir.normalized * 0.02f;
-                }
-            }
-            else
-            {
-                points.Add(curPoint + curDir * 20f);
+                FlowManager.Instance.Clear();
                 break;
             }
-        }
+            else if (hit.collider.CompareTag("Boundary"))
+            {
+                break;
+            }
+            else if (hit.collider.CompareTag("Mirror"))
+            {
+                Mirror hitM = hit.transform.GetComponent<Mirror>();
 
-        DrawLine();
+                curDir = hitM.calculateReflexDgree(curDir).normalized;
+                curPoint = hit.point + curDir * 0.02f;
+            }
+        }
+        else
+        {
+            FlowManager.Instance.WriteLog($"No hit after point: {curPoint} | dir: {curDir}");
+            points.Add(curPoint + curDir * 20f);
+            break;
+        }
     }
+
+    DrawLine();
+}
 
     LineRenderer lineRenderer;
     void DrawLine()
