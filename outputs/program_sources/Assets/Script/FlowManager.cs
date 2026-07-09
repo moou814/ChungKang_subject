@@ -1,5 +1,4 @@
 using System;
-using NUnit.Framework.Internal.Commands;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -30,13 +29,6 @@ public class FlowManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         stage = 1;
-    }
-
-    [SerializeField] private GameObject skipButton;
-    public void skip()
-    {
-        if (currentSceneIndex != 3) 
-            Clear();
     }
 
     [SerializeField, FormerlySerializedAs("debugerText")] private TMP_Text debuggerText;
@@ -88,8 +80,7 @@ public class FlowManager : MonoBehaviour
     // Kept for existing Unity Button events in MainScene.
     public void selectStage(int selectedStage)
     {
-        if (!isStageClear[selectedStage])
-            SelectStage(selectedStage);
+        SelectStage(selectedStage);
     }
 
     private int currentSceneIndex = MainSceneIndex;
@@ -112,13 +103,9 @@ public class FlowManager : MonoBehaviour
         }
 
         SetActive(clearPanel, false);
-
-        if (isStageClear[stage]) SetActive(selectPanelStage, newSceneNum == MainSceneIndex);
-        else SetActive(selectPanelPuzzle, newSceneNum == MainSceneIndex);
+        SetActive(selectPanelPuzzle, newSceneNum == MainSceneIndex);
 
         currentSceneIndex = newSceneNum;
-
-        skipButton.SetActive(currentSceneIndex == 3? false : true);
 
         SceneManager.LoadScene(SceneNames[newSceneNum], LoadSceneMode.Single);
     }

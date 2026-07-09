@@ -1,0 +1,3 @@
+created word
+before open
+after open

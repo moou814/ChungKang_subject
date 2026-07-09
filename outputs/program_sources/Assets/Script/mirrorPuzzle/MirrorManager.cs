@@ -112,7 +112,6 @@ public class MirrorManager : MonoBehaviour
                         target.Init(targetColor);
 
                         targets.Add(target);
-                        target.gameObject.SetActive(true);
                         targetIndex++;
                         break;
 
