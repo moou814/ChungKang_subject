@@ -1,22 +1,45 @@
-using System;
-using NUnit.Framework.Internal.Commands;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
+/// <summary>
+/// 게임 전체 흐름을 담당하는 전역 매니저.
+/// 씬 전환, 스테이지/퍼즐 클리어 상태 관리, 화면 내 디버그 로그 출력을 맡는다.
+/// </summary>
 public class FlowManager : MonoBehaviour
 {
-    private const int PuzzleCount = 3;
-    private const int MainSceneIndex = 3;
-    private const int MaxDebugLines = 12;
-
     public static FlowManager Instance { get; private set; }
 
-    private readonly bool[] isPuzzleClear = new bool[PuzzleCount];
+    private const int PuzzleCount = 3;      // 0:Pipe, 1:BitMask, 2:Mirror
+    private const int MainSceneIndex = 3;   // sceneNames에서 MainScene의 인덱스
+    private const int MaxStage = 3;         // 스테이지 번호는 1 ~ MaxStage
 
-    // Stage buttons pass 1, 2, 3, so index 0 is intentionally unused.
-    private readonly bool[] isStageClear = new bool[PuzzleCount + 1];
+    private static readonly string[] sceneNames =
+    {
+        "PipeScene",
+        "BitMaskScene",
+        "MirrorScene",
+        "MainScene"
+    };
+
+    // 현재 스테이지에서 각 퍼즐을 풀었는지 여부 (인덱스 = 퍼즐 번호)
+    private readonly bool[] isPuzzleClear = new bool[PuzzleCount];
+    // 스테이지 클리어 여부 (스테이지 번호가 1부터 시작하므로 크기는 MaxStage + 1)
+    private readonly bool[] isStageClear = new bool[MaxStage + 1];
+
+    /// <summary>현재 선택된 스테이지 번호 (1 ~ MaxStage). 각 퍼즐 매니저가 참조한다.</summary>
+    public int stage = 1;
+
+    private int curSceneNum = MainSceneIndex;
+
+    [FormerlySerializedAs("debugerText")]
+    [SerializeField] private TMP_Text debugText;
+    [FormerlySerializedAs("selectPanel_stage")]
+    [SerializeField] private GameObject stageSelectPanel;
+    [FormerlySerializedAs("selectPanel_puzzle")]
+    [SerializeField] private GameObject puzzleSelectPanel;
+    [SerializeField] private GameObject clearPanel;
 
     private void Awake()
     {
@@ -28,132 +51,102 @@ public class FlowManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
-
-        stage = 1;
     }
 
+    #region 디버그 로그 (심사용: 퍼즐 내부 데이터 실시간 출력)
+
+    private const int MaxLogLines = 12;
+    private int logLineCount;
+
+    /// <summary>화면 내 디버그 텍스트 창에 한 줄을 출력한다. 줄 수가 차면 비우고 다시 쓴다.</summary>
+    public void WriteLog(string context)
+    {
+        if (debugText == null) return;
+
+        if (logLineCount >= MaxLogLines)
+        {
+            debugText.text = "";
+            logLineCount = 0;
+        }
+
+        logLineCount++;
+        debugText.text += "\n" + context;
+    }
+
+    /// <summary>심사용 치트: 현재 퍼즐을 강제 클리어 처리한다. (디버그 UI 버튼에 연결)</summary>
     [SerializeField] private GameObject skipButton;
     public void skip()
     {
-        if (currentSceneIndex != 3) 
+        WriteLog($"stage{stage} {sceneNames[curSceneNum]} | skip");
+
+        if (curSceneNum != 3)
             Clear();
     }
 
-    [SerializeField, FormerlySerializedAs("debugerText")] private TMP_Text debuggerText;
-    private int debugLineCount;
+    #endregion
 
-    public void WriteLog(string context)
+    #region 게임 흐름 제어
+
+    /// <summary>스테이지 선택 버튼에서 호출. 퍼즐 클리어 상태를 초기화하고 퍼즐 선택 화면으로 넘어간다.</summary>
+    public void SelectStage(int newStage)
     {
-        if (debuggerText == null)
+        if (newStage < 1 || newStage > MaxStage)
         {
-            Debug.Log(context);
+            WriteLog($"[Error] Invalid stage: {newStage}");
             return;
         }
 
-        if (debugLineCount >= MaxDebugLines)
+        stage = newStage;
+
+        for (int i = 0; i < isPuzzleClear.Length; i++)
         {
-            debuggerText.text = "";
-            debugLineCount = 0;
+            isPuzzleClear[i] = false;
         }
 
-        debugLineCount++;
-        debuggerText.text += "\n" + context;
+        stageSelectPanel.SetActive(false);
+        puzzleSelectPanel.SetActive(true);
     }
 
+    /// <summary>퍼즐 선택 버튼에서 호출. 이미 클리어한 퍼즐이면 무시한다.</summary>
     public void GoPuzzle(int puzzle)
     {
-        if (!IsValidPuzzleIndex(puzzle))
-        {
-            WriteLog($"Invalid puzzle index: {puzzle}");
-            return;
-        }
-
+        if (puzzle < 0 || puzzle >= PuzzleCount) return;
         if (isPuzzleClear[puzzle]) return;
 
         RequestScene(puzzle);
     }
 
-    [SerializeField, FormerlySerializedAs("selectPanel_stage")] private GameObject selectPanelStage;
-
-    public void SelectStage(int selectedStage)
-    {
-        stage = Mathf.Clamp(selectedStage, 1, PuzzleCount);
-        Array.Clear(isPuzzleClear, 0, isPuzzleClear.Length);
-
-        SetActive(selectPanelStage, false);
-        SetActive(selectPanelPuzzle, true);
-        WriteLog($"Stage selected: {stage}");
-    }
-
-    // Kept for existing Unity Button events in MainScene.
-    public void selectStage(int selectedStage)
-    {
-        if (!isStageClear[selectedStage])
-            SelectStage(selectedStage);
-    }
-
-    private int currentSceneIndex = MainSceneIndex;
-    public int stage;
-
-    private static readonly string[] SceneNames = new string[]
-    {
-        "PipeScene",
-        "BitMaskScene",
-        "MirrorScene",
-        "MainScene"
-    };
-
+    /// <summary>씬 전환. 메인 씬으로 돌아올 때는 퍼즐 선택 패널을 다시 띄운다.</summary>
     public void RequestScene(int newSceneNum)
     {
-        if (newSceneNum < 0 || newSceneNum >= SceneNames.Length)
-        {
-            WriteLog($"Invalid scene index: {newSceneNum}");
-            return;
-        }
+        if (newSceneNum < 0 || newSceneNum >= sceneNames.Length) return;
 
-        SetActive(clearPanel, false);
+        clearPanel.SetActive(false);
+        
+        if (isStageClear[stage]) puzzleSelectPanel.SetActive(newSceneNum == MainSceneIndex);
+        else stageSelectPanel.SetActive(newSceneNum == MainSceneIndex);
 
-        if (isStageClear[stage]) SetActive(selectPanelStage, newSceneNum == MainSceneIndex);
-        else SetActive(selectPanelPuzzle, newSceneNum == MainSceneIndex);
+        skipButton.SetActive(newSceneNum == 3 ? false : true);
 
-        currentSceneIndex = newSceneNum;
-
-        skipButton.SetActive(currentSceneIndex == 3? false : true);
-
-        SceneManager.LoadScene(SceneNames[newSceneNum], LoadSceneMode.Single);
+        curSceneNum = newSceneNum;
+        SceneManager.LoadScene(sceneNames[newSceneNum], LoadSceneMode.Single);
     }
 
-    [SerializeField] private GameObject clearPanel;
-    [SerializeField, FormerlySerializedAs("selectPanel_puzzle")] private GameObject selectPanelPuzzle;
-
+    /// <summary>퍼즐 매니저가 클리어 조건을 만족했을 때 호출. 세 퍼즐을 모두 풀면 스테이지 클리어.</summary>
     public void Clear()
     {
-        if (!IsValidPuzzleIndex(currentSceneIndex))
-        {
-            WriteLog($"Clear ignored. Current scene index is not a puzzle: {currentSceneIndex}");
-            return;
-        }
+        // 메인 씬 등 퍼즐 씬이 아닌 곳에서 호출되면 무시 (배열 범위 방어)
+        if (curSceneNum < 0 || curSceneNum >= PuzzleCount) return;
 
-        isPuzzleClear[currentSceneIndex] = true;
-        SetActive(clearPanel, true);
+        isPuzzleClear[curSceneNum] = true;
+        clearPanel.SetActive(true);
 
         if (isPuzzleClear[0] && isPuzzleClear[1] && isPuzzleClear[2])
         {
             isStageClear[stage] = true;
-            WriteLog($"Stage {stage} Clear");
+            WriteLog($"Stage {stage} All Clear!");
         }
     }
 
-    private static bool IsValidPuzzleIndex(int index)
-    {
-        return index >= 0 && index < PuzzleCount;
-    }
-
-    private static void SetActive(GameObject target, bool active)
-    {
-        if (target != null)
-        {
-            target.SetActive(active);
-        }
-    }
+    #endregion
 }

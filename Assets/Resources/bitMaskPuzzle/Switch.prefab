@@ -123,8 +123,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6880499131669739596}
-        m_TargetAssemblyTypeName: BitMaskPuzzle_switch, Assembly-CSharp
-        m_MethodName: onoff
+        m_TargetAssemblyTypeName: BitMaskSwitch, Assembly-CSharp
+        m_MethodName: Press
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

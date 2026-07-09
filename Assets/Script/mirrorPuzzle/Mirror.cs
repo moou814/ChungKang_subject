@@ -1,68 +1,69 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// 거울 퍼즐의 거울 하나. 마우스를 가까이 대고 좌/우 클릭을 누르고 있으면 회전한다.
+/// 광선이 부딪히면 입사 벡터와 법선 벡터로 반사 방향을 계산해 준다.
+/// </summary>
 public class Mirror : MonoBehaviour
 {
+    private const float InteractRadius = 1.5f;   // 마우스로 조작 가능한 거리
+
+    [SerializeField] private float rotateSpeed;  // 초당 회전 각도 (deg/s)
+
     private float angle;
-    [SerializeField] private float rotateSpeed;
+    private Camera mainCam;
+
+    private void Start()
+    {
+        mainCam = Camera.main;
+        angle = transform.eulerAngles.z;
+    }
 
     private void Update()
     {
-        if (Camera.main == null || Mouse.current == null)
+        if (mainCam == null || Mouse.current == null) return;
+
+        Vector2 mouseWorld = mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        if (Vector2.Distance(mouseWorld, transform.position) > InteractRadius) return;
+
+        if (Mouse.current.leftButton.isPressed)
         {
-            return;
+            Turn(clockwise: false);
         }
 
-        Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-
-        if (Vector2.Distance(mouseWorld, (Vector2)transform.position) < 1.5f)
+        if (Mouse.current.rightButton.isPressed)
         {
-            if (Mouse.current.leftButton.isPressed)
-            {
-                RotateMirror(false);
-            }
-
-            if (Mouse.current.rightButton.isPressed)
-            {
-                RotateMirror(true);
-            }
+            Turn(clockwise: true);
         }
     }
 
-    private void RotateMirror(bool clockwise)
+    /// <summary>델타타임 기반 회전(프레임 속도와 무관)한 뒤, 광선 경로를 다시 계산하게 한다.</summary>
+    private void Turn(bool clockwise)
     {
-        if (clockwise)
-        {
-            angle = (angle + rotateSpeed * Time.deltaTime) % 360f;
-        }
-        else
-        {
-            angle = (angle - rotateSpeed * Time.deltaTime);
-            angle = angle < 0 ? 360f + angle : angle;
-        }
+        float delta = rotateSpeed * Time.deltaTime;
+        angle = Mathf.Repeat(angle + (clockwise ? delta : -delta), 360f);
 
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
+        // 회전 직후의 콜라이더 위치로 즉시 레이캐스트할 수 있도록 물리 트랜스폼을 동기화
         Physics2D.SyncTransforms();
 
         MirrorManager.Instance.DrawRay();
     }
 
-    public Vector2 CalculateReflectDirection(Vector2 direction)
+    /// <summary>
+    /// 반사 벡터 공식 r = d - 2(d·n)n 을 그대로 구현한다.
+    /// d: 입사 방향(단위 벡터), n: 거울의 법선(transform.up).
+    /// </summary>
+    public Vector2 CalculateReflection(Vector2 incidentDir)
     {
-        Vector2 dir = direction.normalized;
-        Vector2 normal = transform.up.normalized;
+        Vector2 d = incidentDir.normalized;
+        Vector2 n = transform.up.normalized;
 
-        float dot = dir.x * normal.x + dir.y * normal.y;
+        float dot = d.x * n.x + d.y * n.y;   // 내적 d·n
+        Vector2 reflected = d - 2f * dot * n;
 
-        Vector2 reflect = dir - 2f * dot * normal;
-
-        return reflect.normalized;
-    }
-
-    // Kept for older code references.
-    public Vector2 calculateReflexDgree(Vector2 direction)
-    {
-        return CalculateReflectDirection(direction);
+        return reflected.normalized;
     }
 }

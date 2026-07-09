@@ -122,8 +122,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5771074658232576458}
-        m_TargetAssemblyTypeName: elevatorPuzzlePiece, Assembly-CSharp
-        m_MethodName: turn
+        m_TargetAssemblyTypeName: PipePuzzleBlock, Assembly-CSharp
+        m_MethodName: Turn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

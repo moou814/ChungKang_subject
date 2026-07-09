@@ -12,36 +12,42 @@ public enum HitKind
     Prism
 }
 
-public enum BeamColor
-{
-    White,
-    Red,
-    Green,
-    Blue
-}
+public enum BeamColor { White, Red, Green, Blue }
 
+/// <summary>
+/// 거울 퍼즐 매니저.
+/// 스테이지 데이터를 2차원 배열(HitKind)로 읽어 맵을 구성하고,
+/// 광선(RayLine)들의 경로 계산과 클리어 판정을 총괄한다.
+/// 거울이 회전할 때마다 DrawRay()가 호출되어 광선 전체를 다시 계산한다.
+/// </summary>
 public class MirrorManager : MonoBehaviour
 {
-    private const int MaxRayCount = 20;
+    public static MirrorManager Instance { get; private set; }
+
+    private const int MaxRayCount = 20;   // 프리즘 분기로 광선이 무한히 늘어나는 것을 방지
 
     [SerializeField] private Tilemap tilemap;
     [SerializeField] private MirrorStageData[] stageData;
+
     [SerializeField] private GameObject mirrorPrefab;
     [SerializeField] private GameObject boundaryPrefab;
     [SerializeField] private GameObject targetPrefab;
     [SerializeField] private GameObject prismPrefab;
-    [SerializeField, FormerlySerializedAs("puzzleB")] private Transform puzzleBoard;
+
+    [FormerlySerializedAs("puzzleB")]
+    [SerializeField] private Transform puzzleRoot;
+
+    /// <summary>[0]: White/Red, [1]: Green, [2]: Blue 광선용</summary>
+    public LineRenderer[] lineRenderers = new LineRenderer[3];
 
     public int stage;
-    public LineRenderer[] lineRenderers = new LineRenderer[3];
-    public static MirrorManager Instance { get; private set; }
 
     private HitKind[,] map;
     private readonly List<RayLine> rays = new List<RayLine>();
     private readonly List<Target> targets = new List<Target>();
 
-    private Vector2 initialRayStartPoint;
-    private Vector2 initialRayDirection;
+    // 시작 광선 (DrawRay마다 이 광선부터 다시 계산한다. 매번 새로 만들지 않고 재사용)
+    private RayLine primaryRay;
 
     private void Awake()
     {
@@ -52,106 +58,95 @@ public class MirrorManager : MonoBehaviour
         }
 
         Instance = this;
+
         stage = FlowManager.Instance.stage;
 
-        if (!TryGetStageData(out MirrorStageData currentStageData))
+        if (stage < 0 || stage >= stageData.Length || stageData[stage] == null)
         {
+            FlowManager.Instance.WriteLog($"[Error] No Mirror stage data for stage {stage}");
             return;
         }
 
-        MakeMap(currentStageData);
+        BuildMap();
         DrawRay();
     }
 
-    private bool TryGetStageData(out MirrorStageData data)
+    /// <summary>스테이지 데이터의 1차원 배열을 2차원 그리드로 읽어 오브젝트를 배치한다.</summary>
+    private void BuildMap()
     {
-        data = null;
-        if (stageData == null || stage < 0 || stage >= stageData.Length || stageData[stage] == null)
-        {
-            FlowManager.Instance.WriteLog($"Mirror stage data missing: {stage}");
-            return false;
-        }
-
-        data = stageData[stage];
-        return true;
-    }
-
-    private void MakeMap(MirrorStageData data)
-    {
+        MirrorStageData data = stageData[stage];
         int width = data.mapSize[0];
         int height = data.mapSize[1];
-        int targetIndex = 0;
 
         map = new HitKind[height, width];
+        int targetIdx = 0;
 
         for (int y = 0; y < height; y++)
         {
             for (int x = 0; x < width; x++)
             {
-                HitKind hitKind = data.map[y * width + x];
-                map[y, x] = hitKind;
+                map[y, x] = data.map[y * width + x];
+                Vector3 worldPos = tilemap.CellToWorld(new Vector3Int(x, -y));
 
-                Vector3 worldPosition = tilemap.CellToWorld(new Vector3Int(x, -y));
-                switch (hitKind)
+                switch (map[y, x])
                 {
                     case HitKind.Mirror:
-                        Instantiate(mirrorPrefab, worldPosition, Quaternion.identity, puzzleBoard);
+                        Instantiate(mirrorPrefab, puzzleRoot).transform.position = worldPos;
                         break;
 
                     case HitKind.Boundary:
-                        Instantiate(boundaryPrefab, worldPosition, Quaternion.identity, puzzleBoard);
-                        break;
-
-                    case HitKind.Target:
-                        Target target = Instantiate(targetPrefab, worldPosition, Quaternion.identity, puzzleBoard)
-                            .GetComponent<Target>();
-
-                        BeamColor targetColor = targetIndex < data.targets.Length
-                            ? data.targets[targetIndex]
-                            : BeamColor.White;
-                        target.Init(targetColor);
-
-                        targets.Add(target);
-                        target.gameObject.SetActive(true);
-                        targetIndex++;
+                        Instantiate(boundaryPrefab, puzzleRoot).transform.position = worldPos;
                         break;
 
                     case HitKind.Prism:
-                        Instantiate(prismPrefab, worldPosition, Quaternion.identity, puzzleBoard);
+                        Instantiate(prismPrefab, puzzleRoot).transform.position = worldPos;
+                        break;
+
+                    case HitKind.Target:
+                        GameObject targetObj = Instantiate(targetPrefab, puzzleRoot);
+                        targetObj.transform.position = worldPos;
+
+                        Target target = targetObj.GetComponent<Target>();
+                        target.targetColor = data.targets[targetIdx++];
+                        target.isClear = false;
+                        targets.Add(target);
+
+                        targetObj.SetActive(true);
                         break;
                 }
             }
         }
 
-        initialRayStartPoint = tilemap.CellToWorld(data.rayStartPoint);
-        initialRayDirection = data.rayStartDir.normalized;
+        primaryRay = new RayLine(tilemap.CellToWorld(data.rayStartPoint), data.rayStartDir, BeamColor.White);
     }
 
-    public void AddRay(Vector2 startPoint, Vector2 startDirection, BeamColor color, Collider2D ignoreCollider = null)
+    /// <summary>프리즘 등이 새 광선을 만들 때 호출한다. (같은 프레임의 DrawRay 루프에서 이어서 계산된다)</summary>
+    public void NewRay(Vector2 startPoint, Vector2 startDir, BeamColor color, Collider2D ignoreCollider = null)
     {
-        rays.Add(new RayLine
-        {
-            startPoint = startPoint,
-            startDir = startDirection.normalized,
-            beamColor = color,
-            ignoreCollider = ignoreCollider
-        });
+        rays.Add(new RayLine(startPoint, startDir, color, ignoreCollider));
     }
 
-    // Kept for older code references.
-    public void newRay(Vector2 startP, Vector2 startD, BeamColor color, Collider2D ignoreCollider = null)
-    {
-        AddRay(startP, startD, color, ignoreCollider);
-    }
-
+    /// <summary>
+    /// 광선 전체를 처음부터 다시 계산한다.
+    /// 이전 계산에서 만들어진 분기 광선을 모두 버리고 시작 광선 하나만 남긴 뒤,
+    /// 계산 도중 프리즘이 추가하는 광선까지 순서대로 처리한다.
+    /// </summary>
     public void DrawRay()
     {
-        ClearTargets();
-        ClearLineRenderers();
+        foreach (Target target in targets)
+        {
+            target.isClear = false;
+        }
+
+        foreach (LineRenderer lineRenderer in lineRenderers)
+        {
+            if (lineRenderer != null) lineRenderer.positionCount = 0;
+        }
 
         rays.Clear();
-        AddRay(initialRayStartPoint, initialRayDirection, BeamColor.White);
+        rays.Add(primaryRay);
 
+        // 루프 도중 프리즘이 rays에 광선을 추가하므로 Count를 매번 다시 평가한다
         for (int i = 0; i < rays.Count && i < MaxRayCount; i++)
         {
             rays[i].CalculateWay();
@@ -160,50 +155,13 @@ public class MirrorManager : MonoBehaviour
         CheckClear();
     }
 
-    public LineRenderer GetLineRenderer(BeamColor color)
-    {
-        int index = color switch
-        {
-            BeamColor.Green => 1,
-            BeamColor.Blue => 2,
-            _ => 0
-        };
-
-        return index >= 0 && index < lineRenderers.Length ? lineRenderers[index] : null;
-    }
-
-    private void ClearTargets()
-    {
-        foreach (Target target in targets)
-        {
-            target.ResetClear();
-        }
-    }
-
-    private void ClearLineRenderers()
-    {
-        foreach (LineRenderer lineRenderer in lineRenderers)
-        {
-            if (lineRenderer != null)
-            {
-                lineRenderer.positionCount = 0;
-            }
-        }
-    }
-
     private void CheckClear()
     {
-        if (targets.Count == 0)
-        {
-            return;
-        }
+        if (targets.Count == 0) return;
 
         foreach (Target target in targets)
         {
-            if (!target.isClear)
-            {
-                return;
-            }
+            if (!target.isClear) return;
         }
 
         FlowManager.Instance.Clear();

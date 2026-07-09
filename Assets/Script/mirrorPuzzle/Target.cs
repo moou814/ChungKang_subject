@@ -1,61 +1,27 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>거울 퍼즐의 타겟. 광선이 도달하면 isClear가 켜진다.</summary>
 public class Target : MonoBehaviour
 {
     public BeamColor targetColor;
     public bool isClear;
 
-    private Image image;
-
     private void Awake()
     {
-        image = GetComponent<Image>();
-        ApplyColor();
-    }
+        Color color;
 
-    public void Init(BeamColor color)
-    {
-        targetColor = color;
-        isClear = false;
-
-        if (image == null)
+        switch (targetColor)
         {
-            image = GetComponent<Image>();
+            case BeamColor.Red: color = Color.red; break;
+            case BeamColor.Green: color = Color.green; break;
+            case BeamColor.Blue: color = Color.blue; break;
+            default: color = Color.greenYellow; break; // White 타겟 표시색
         }
 
-        ApplyColor();
-    }
-
-    public void ResetClear()
-    {
-        isClear = false;
-    }
-
-    public bool TryClear(BeamColor incomingColor)
-    {
-        if (targetColor != BeamColor.White && incomingColor != targetColor)
+        if (TryGetComponent(out Image image))
         {
-            return false;
+            image.color = color;
         }
-
-        isClear = true;
-        return true;
-    }
-
-    private void ApplyColor()
-    {
-        if (image == null)
-        {
-            return;
-        }
-
-        image.color = targetColor switch
-        {
-            BeamColor.Red => Color.red,
-            BeamColor.Green => Color.green,
-            BeamColor.Blue => Color.blue,
-            _ => Color.white
-        };
     }
 }
