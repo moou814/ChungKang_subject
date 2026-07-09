@@ -10,6 +10,7 @@ public enum HitKind
         Boundary,
         Prism
     }
+public enum BeamColor { White, Red, Green, Blue }
 
 public class MirrorManager : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class MirrorManager : MonoBehaviour
     public int stage;
     [SerializeField] private MirrorStageData[] stageData;
     public static MirrorManager Instance { get; private set; }
+
+    public LineRenderer[] lineRenderers = new LineRenderer[3];
+
+    List<bool> isClear;
 
     private void Awake()
     {
@@ -41,8 +46,21 @@ public class MirrorManager : MonoBehaviour
     [SerializeField] GameObject mirrorPrefab;
     [SerializeField] GameObject boundaryPrefab;
     [SerializeField] GameObject targetPrefab;
+    [SerializeField] GameObject prismPrefab;
 
     [SerializeField] private Transform puzzleB;
+    int idx = 0;
+
+    List<Target> targets = new List<Target>();
+
+    void targetClear()
+    {
+        foreach(Target t in targets)
+        {
+            t.isClear = false;
+        }
+    }
+
     void makeMap()
     {
         map = new HitKind[stageData[stage].mapSize[1], stageData[stage].mapSize[0]];
@@ -67,25 +85,64 @@ public class MirrorManager : MonoBehaviour
 
                     case HitKind.Target:
                         GameObject t = Instantiate(targetPrefab, puzzleB);
+                        targets.Add(t.GetComponent<Target>());
+
                         t.transform.position = tilemap.CellToWorld(new Vector3Int(x, -y));
+                        targets[^1].targetColor = stageData[stage].targets[idx++];
+                        targets[^1].isClear = false;
+
+                        t.SetActive(true);
+
+                        break;
+
+                    case HitKind.Prism:
+                        GameObject p = Instantiate(prismPrefab, puzzleB);
+                        p.transform.position = tilemap.CellToWorld(new Vector3Int(x, -y));
                         break;
 
                 }
             }
         }
 
+        newRay(tilemap.CellToWorld(stageData[stage].rayStartPoint), stageData[stage].rayStartDir, BeamColor.White);
+    }
+
+    public void newRay(Vector2 startP, Vector2 startD, BeamColor color, Collider2D ignoreCollider = null)
+    {
         RayLine r = new RayLine();
-        r.startPoint = tilemap.CellToWorld(stageData[stage].rayStartPoint);
-        r.startDir = stageData[stage].rayStartDir;
+
+        r.startPoint = startP;
+        r.startDir = startD.normalized;
+        r.beamColor = color;
+        r.ignoreCollider = ignoreCollider;
 
         rays.Add(r);
     }
 
+    void checkClear()
+    {
+        bool c = true;
+
+        for (int i = 0; i < targets.Count; i++)
+        {
+            if (!targets[i].isClear) {
+                c = false; 
+                break;
+            }
+        }
+
+        if (c) FlowManager.Instance.Clear();
+    }
+
     public void DrawRay()
     {
-        foreach(var r in rays)
+        targetClear();
+
+        for (int i = 0; i < rays.Count && i < 20; i++)
         {
-            r.calculateWay();
+            rays[i].calculateWay();
         }
+
+        checkClear();
     }
 }

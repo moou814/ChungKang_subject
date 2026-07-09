@@ -6,6 +6,7 @@ public class MirrorStageData : ScriptableObject
 {
     public int stage;
     public HitKind[] map;
+    public BeamColor[] targets;
     public int[] mapSize;
     public Vector3Int rayStartPoint;
     public Vector2 rayStartDir;

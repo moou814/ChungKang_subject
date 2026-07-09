@@ -12,14 +12,13 @@ GameObject:
   - component: {fileID: 2279902952326263780}
   - component: {fileID: 5167287483747406889}
   - component: {fileID: 6254175489059718207}
-  - component: {fileID: 3156107901692116422}
   m_Layer: 5
-  m_Name: target
-  m_TagString: Target
+  m_Name: prism
+  m_TagString: Prism
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4750084751724193036
 RectTransform:
   m_ObjectHideFlags: 0
@@ -60,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.732862, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.48584908, g: 1, b: 0.9821997, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -121,18 +120,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 160, y: 160}
+  m_Size: {x: 16, y: 16}
   m_EdgeRadius: 0
---- !u!114 &3156107901692116422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7177454348334503346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c48b567ec691944fbe4bc595d207178, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Target
-  targetColor: 0

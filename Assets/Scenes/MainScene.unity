@@ -204,12 +204,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 239548623}
         m_TargetAssemblyTypeName: FlowManager, Assembly-CSharp
-        m_MethodName: GoPuzzle
+        m_MethodName: selectStage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: PipeScene
           m_BoolArgument: 0
@@ -309,7 +309,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: mirror
+  m_text: stage 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -419,9 +419,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlowManager
   debugerText: {fileID: 2040452683}
+  selectPanel_stage: {fileID: 1924275620}
   stage: 1
   clearPanel: {fileID: 813143017}
-  selectPanel: {fileID: 2040737058}
+  selectPanel_puzzle: {fileID: 2040737058}
 --- !u!4 &239548624
 Transform:
   m_ObjectHideFlags: 0
@@ -602,12 +603,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 239548623}
         m_TargetAssemblyTypeName: FlowManager, Assembly-CSharp
-        m_MethodName: GoPuzzle
+        m_MethodName: selectStage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: PipeScene
           m_BoolArgument: 0
@@ -1683,12 +1684,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 239548623}
         m_TargetAssemblyTypeName: FlowManager, Assembly-CSharp
-        m_MethodName: GoPuzzle
+        m_MethodName: selectStage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: PipeScene
           m_BoolArgument: 0
@@ -1788,7 +1789,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: pi
+  m_text: stage 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2465,7 +2466,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: bit
+  m_text: stage 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2777,7 +2778,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2040737059
 RectTransform:
   m_ObjectHideFlags: 0
