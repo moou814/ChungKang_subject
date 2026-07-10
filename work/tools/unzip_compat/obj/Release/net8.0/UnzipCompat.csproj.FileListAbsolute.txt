@@ -1,0 +1,15 @@
+C:\Users\윤정연\OneDrive\문서\GitHub\ChungKang_subject\work\tools\unzip_compat\bin\Release\net8.0\unzip.exe
+C:\Users\윤정연\OneDrive\문서\GitHub\ChungKang_subject\work\tools\unzip_compat\bin\Release\net8.0\unzip.deps.json
+C:\Users\윤정연\OneDrive\문서\GitHub\ChungKang_subject\work\tools\unzip_compat\bin\Release\net8.0\unzip.runtimeconfig.json
+C:\Users\윤정연\OneDrive\문서\GitHub\ChungKang_subject\work\tools\unzip_compat\bin\Release\net8.0\unzip.dll
+C:\Users\윤정연\OneDrive\문서\GitHub\ChungKang_subject\work\tools\unzip_compat\bin\Release\net8.0\unzip.pdb
+C:\Users\윤정연\OneDrive\문서\GitHub\ChungKang_subject\work\tools\unzip_compat\obj\Release\net8.0\UnzipCompat.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\윤정연\OneDrive\문서\GitHub\ChungKang_subject\work\tools\unzip_compat\obj\Release\net8.0\UnzipCompat.AssemblyInfoInputs.cache
+C:\Users\윤정연\OneDrive\문서\GitHub\ChungKang_subject\work\tools\unzip_compat\obj\Release\net8.0\UnzipCompat.AssemblyInfo.cs
+C:\Users\윤정연\OneDrive\문서\GitHub\ChungKang_subject\work\tools\unzip_compat\obj\Release\net8.0\UnzipCompat.csproj.CoreCompileInputs.cache
+C:\Users\윤정연\OneDrive\문서\GitHub\ChungKang_subject\work\tools\unzip_compat\obj\Release\net8.0\UnzipCompat.sourcelink.json
+C:\Users\윤정연\OneDrive\문서\GitHub\ChungKang_subject\work\tools\unzip_compat\obj\Release\net8.0\unzip.dll
+C:\Users\윤정연\OneDrive\문서\GitHub\ChungKang_subject\work\tools\unzip_compat\obj\Release\net8.0\refint\unzip.dll
+C:\Users\윤정연\OneDrive\문서\GitHub\ChungKang_subject\work\tools\unzip_compat\obj\Release\net8.0\unzip.pdb
+C:\Users\윤정연\OneDrive\문서\GitHub\ChungKang_subject\work\tools\unzip_compat\obj\Release\net8.0\UnzipCompat.genruntimeconfig.cache
+C:\Users\윤정연\OneDrive\문서\GitHub\ChungKang_subject\work\tools\unzip_compat\obj\Release\net8.0\ref\unzip.dll

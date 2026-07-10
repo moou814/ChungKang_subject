@@ -1,0 +1,5 @@
+C:\Users\윤정연\AppData\Local\Temp\codex-unzip-compat-bin\unzip.exe
+C:\Users\윤정연\AppData\Local\Temp\codex-unzip-compat-bin\unzip.dll
+C:\Users\윤정연\AppData\Local\Temp\codex-unzip-compat-bin\unzip.deps.json
+C:\Users\윤정연\AppData\Local\Temp\codex-unzip-compat-bin\unzip.runtimeconfig.json
+C:\Users\윤정연\AppData\Local\Temp\codex-unzip-compat-bin\unzip.pdb

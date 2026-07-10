@@ -1,0 +1,192 @@
+{"kind":"deck","id":"pr/txm6x9","name":"Deck"}
+{"kind":"layout","layoutId":"/ppt/slideMasters/slideMaster1.xml","name":"","type":"master","placeholders":[{"name":"title","type":"title","textPreview":"Click to edit Master title style"},{"name":"body","type":"body","textPreview":"Click to edit Master text styles | Second level | Third level | Fourth level | Fifth level"},{"name":"dateTime","type":"dateTime","textPreview":"8/1/2011"},{"name":"footer","type":"footer"},{"name":"slideNumber","type":"slideNumber","textPreview":"‹#›"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout1.xml","name":"Title Slide","type":"title","placeholders":[{"name":"title","type":"title","textPreview":"Click to edit Master title style"},{"name":"subtitle","type":"subtitle","textPreview":"Click to edit Master subtitle style"},{"name":"dateTime","type":"dateTime","textPreview":"8/1/2011"},{"name":"footer","type":"footer"},{"name":"slideNumber","type":"slideNumber","textPreview":"‹#›"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout2.xml","name":"Title and Content","type":"obj","placeholders":[{"name":"title","type":"title","textPreview":"Click to edit Master title style"},{"name":"content placeholder 2","textPreview":"Click to edit Master text styles | Second level | Third level | Fourth level | Fifth level"},{"name":"dateTime","type":"dateTime","textPreview":"8/1/2011"},{"name":"footer","type":"footer"},{"name":"slideNumber","type":"slideNumber","textPreview":"‹#›"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout3.xml","name":"Section Header","type":"secHead","placeholders":[{"name":"title","type":"title","textPreview":"Click to edit Master title style"},{"name":"body","type":"body","textPreview":"Click to edit Master text styles"},{"name":"dateTime","type":"dateTime","textPreview":"8/1/2011"},{"name":"footer","type":"footer"},{"name":"slideNumber","type":"slideNumber","textPreview":"‹#›"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout4.xml","name":"Two Content","type":"twoObj","placeholders":[{"name":"title","type":"title","textPreview":"Click to edit Master title style"},{"name":"content placeholder 2","textPreview":"Click to edit Master text styles | Second level | Third level | Fourth level | Fifth level"},{"name":"content placeholder 3","textPreview":"Click to edit Master text styles | Second level | Third level | Fourth level | Fifth level"},{"name":"dateTime","type":"dateTime","textPreview":"8/1/2011"},{"name":"footer","type":"footer"},{"name":"slideNumber","type":"slideNumber","textPreview":"‹#›"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout5.xml","name":"Comparison","type":"twoTxTwoObj","placeholders":[{"name":"title","type":"title","textPreview":"Click to edit Master title style"},{"name":"body","type":"body","textPreview":"Click to edit Master text styles"},{"name":"content placeholder 3","textPreview":"Click to edit Master text styles | Second level | Third level | Fourth level | Fifth level"},{"name":"body","type":"body","textPreview":"Click to edit Master text styles"},{"name":"content placeholder 5","textPreview":"Click to edit Master text styles | Second level | Third level | Fourth level | Fifth level"},{"name":"dateTime","type":"dateTime","textPreview":"8/1/2011"},{"name":"footer","type":"footer"},{"name":"slideNumber","type":"slideNumber","textPreview":"‹#›"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout6.xml","name":"Title Only","type":"titleOnly","placeholders":[{"name":"title","type":"title","textPreview":"Click to edit Master title style"},{"name":"dateTime","type":"dateTime","textPreview":"8/1/2011"},{"name":"footer","type":"footer"},{"name":"slideNumber","type":"slideNumber","textPreview":"‹#›"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout7.xml","name":"Blank","type":"blank","placeholders":[{"name":"dateTime","type":"dateTime","textPreview":"8/1/2011"},{"name":"footer","type":"footer"},{"name":"slideNumber","type":"slideNumber","textPreview":"‹#›"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout8.xml","name":"Content with Caption","type":"objTx","placeholders":[{"name":"title","type":"title","textPreview":"Click to edit Master title style"},{"name":"content placeholder 2","textPreview":"Click to edit Master text styles | Second level | Third level | Fourth level | Fifth level"},{"name":"body","type":"body","textPreview":"Click to edit Master text styles"},{"name":"dateTime","type":"dateTime","textPreview":"8/1/2011"},{"name":"footer","type":"footer"},{"name":"slideNumber","type":"slideNumber","textPreview":"‹#›"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout9.xml","name":"Picture with Caption","type":"picTx","placeholders":[{"name":"title","type":"title","textPreview":"Click to edit Master title style"},{"name":"picture","type":"picture"},{"name":"body","type":"body","textPreview":"Click to edit Master text styles"},{"name":"dateTime","type":"dateTime","textPreview":"8/1/2011"},{"name":"footer","type":"footer"},{"name":"slideNumber","type":"slideNumber","textPreview":"‹#›"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout10.xml","name":"Title and Vertical Text","type":"vertTx","placeholders":[{"name":"title","type":"title","textPreview":"Click to edit Master title style"},{"name":"body","type":"body","textPreview":"Click to edit Master text styles | Second level | Third level | Fourth level | Fifth level"},{"name":"dateTime","type":"dateTime","textPreview":"8/1/2011"},{"name":"footer","type":"footer"},{"name":"slideNumber","type":"slideNumber","textPreview":"‹#›"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout11.xml","name":"Vertical Title and Text","type":"vertTitleAndTx","placeholders":[{"name":"title","type":"title","textPreview":"Click to edit Master title style"},{"name":"body","type":"body","textPreview":"Click to edit Master text styles | Second level | Third level | Fourth level | Fifth level"},{"name":"dateTime","type":"dateTime","textPreview":"8/1/2011"},{"name":"footer","type":"footer"},{"name":"slideNumber","type":"slideNumber","textPreview":"‹#›"}]}
+{"kind":"slide","id":"sl/2x4nap4r","slide":1,"title":"CK_project","textShapes":27}
+{"kind":"textbox","id":"sh/cvixczed","slide":1,"name":"TextBox 2","text":"CK_project","textPreview":"CK_project","textChars":10,"textLines":1,"bbox":[667.29,42,585.43,68]}
+{"kind":"shape","id":"sh/5gbq1ory","slide":1,"name":"AutoShape 3","bbox":[1252.71,83,667.29,0]}
+{"kind":"shape","id":"sh/udg7adsj","slide":1,"name":"AutoShape 4","bbox":[0,83,667.29,0]}
+{"kind":"textbox","id":"sh/cj6tovah","slide":1,"name":"TextBox 6","text":"수학적 원리와 자료구조를 활용해 세 가지 퍼즐을 단계별로 해결하는 2D 퍼즐 게임입니다.","textPreview":"수학적 원리와 자료구조를 활용해 세 가지 퍼즐을 단계별로 해결하는 2D 퍼즐 게임입니다.","textChars":49,"textLines":1,"bbox":[72.34,157.59,1288.43,42.67]}
+{"kind":"textbox","id":"sh/jm1cfa9w","slide":1,"text":"세 개의 퍼즐이 한 스테이지를 구성합니다","textPreview":"세 개의 퍼즐이 한 스테이지를 구성합니다","textChars":22,"textLines":1,"bbox":[1088,208,700,54]}
+{"kind":"textbox","id":"sh/u18jqh0f","slide":1,"text":"Pipe","textPreview":"Pipe","textChars":4,"textLines":1,"bbox":[1092,318,190,54]}
+{"kind":"textbox","id":"sh/25kb6xkf","slide":1,"text":"BitMask","textPreview":"BitMask","textChars":7,"textLines":1,"bbox":[1360,318,190,54]}
+{"kind":"textbox","id":"sh/rqd4vmtw","slide":1,"text":"Mirror","textPreview":"Mirror","textChars":6,"textLines":1,"bbox":[1628,318,190,54]}
+{"kind":"textbox","id":"sh/re1w7mp0","slide":1,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[1362,430,40,40]}
+{"kind":"textbox","id":"sh/kzupwb2h","slide":1,"text":"0","textPreview":"0","textChars":1,"textLines":1,"bbox":[1410,430,40,40]}
+{"kind":"textbox","id":"sh/9knih4by","slide":1,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[1458,430,40,40]}
+{"kind":"textbox","id":"sh/2p8nqxs7","slide":1,"text":"0","textPreview":"0","textChars":1,"textLines":1,"bbox":[1506,430,40,40]}
+{"kind":"textbox","id":"sh/ra5gbq1o","slide":1,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[1554,430,40,40]}
+{"kind":"textbox","id":"sh/xs72x4na","slide":1,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[1362,510,40,40]}
+{"kind":"textbox","id":"sh/87ed8bat","slide":1,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[1410,510,40,40]}
+{"kind":"textbox","id":"sh/fmlkjm1c","slide":1,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[1458,510,40,40]}
+{"kind":"textbox","id":"sh/q1orytsv","slide":1,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[1506,510,40,40]}
+{"kind":"textbox","id":"sh/1gvy90je","slide":1,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[1554,510,40,40]}
+{"kind":"shape","id":"sh/8z25kb6x","slide":1,"bbox":[1636,462,280,5]}
+{"kind":"textbox","id":"sh/je9cvixc","slide":1,"text":"Mirror","textPreview":"Mirror","textChars":6,"textLines":1,"bbox":[1695,408,116,42]}
+{"kind":"shape","id":"sh/qtcj6tov","slide":1,"bbox":[1760,500,118,5]}
+{"kind":"textbox","id":"sh/xczed8v6","slide":1,"text":"Target","textPreview":"Target","textChars":6,"textLines":1,"bbox":[1666,552,146,46]}
+{"kind":"textbox","id":"sh/8v6psfil","slide":1,"text":"회전 경로 탐색","textPreview":"회전 경로 탐색","textChars":8,"textLines":1,"bbox":[1086,670,210,36]}
+{"kind":"textbox","id":"sh/w3m94fu1","slide":1,"text":"비트 연산","textPreview":"비트 연산","textChars":5,"textLines":1,"bbox":[1360,670,210,36]}
+{"kind":"textbox","id":"sh/loj2t83i","slide":1,"text":"반사/분기","textPreview":"반사/분기","textChars":5,"textLines":1,"bbox":[1628,670,210,36]}
+{"kind":"textbox","id":"sh/ex0nuxc3","slide":1,"text":"개요","textPreview":"개요","textChars":2,"textLines":1,"bbox":[72,246,260,46]}
+{"kind":"textbox","id":"sh/3itgfmlk","slide":1,"text":"개발 기간: 2026.06.16 ~ 2026.06.27\n스테이지: 3단계, 난이도 점층 구조\n개발 형태: 개인 Unity 프로젝트\n중심 구현: 퍼즐 로직, 상태 전환, 디버그 UI","textPreview":"개발 기간: 2026.06.16 ~ 2026.06.27 | 스테이지: 3단계, 난이도 점층 구조 | 개발 형태: 개인 Unity 프로젝트 | 중심 구현: 퍼즐 로직, 상태 전환, 디버그 UI","textChars":100,"textLines":4,"bbox":[72,306,780,168]}
+{"kind":"textbox","id":"sh/wb2hwfyx","slide":1,"text":"개발 환경","textPreview":"개발 환경","textChars":5,"textLines":1,"bbox":[72,520,320,46]}
+{"kind":"textbox","id":"sh/lwval87e","slide":1,"text":"Unity 6000.2.14f1\nUniversal RP 17.2.0\nInput System 1.16.0\nTarget: Standalone Win64 x64","textPreview":"Unity 6000.2.14f1 | Universal RP 17.2.0 | Input System 1.16.0 | Target: Standalone Win64 x64","textChars":86,"textLines":4,"bbox":[72,580,700,154]}
+{"kind":"textbox","id":"sh/e9cvixcz","slide":1,"text":"플레이 구성","textPreview":"플레이 구성","textChars":6,"textLines":1,"bbox":[72,812,320,46]}
+{"kind":"textbox","id":"sh/3q5o7qpg","slide":1,"text":"MainScene -> PuzzleScene -> Clear -> Stage Select","textPreview":"MainScene -> PuzzleScene -> Clear -> Stage Select","textChars":49,"textLines":1,"bbox":[72,874,820,42]}
+{"kind":"image","id":"im/rytsvu9k","slide":1,"name":"","alt":"Pipe block L sprite","bbox":[1120,420,84,84]}
+{"kind":"image","id":"im/yd0z6103","slide":1,"name":"","alt":"Pipe block I sprite","bbox":[1210,420,84,84]}
+{"kind":"image","id":"im/9s36hcrm","slide":1,"name":"","alt":"Pipe block plus sprite","bbox":[1165,510,84,84]}
+{"kind":"notes","id":"nt/2x4nap4r","slide":1,"text":""}
+{"kind":"slide","id":"sl/pg3ex0nu","slide":2,"title":"게임 개요와 개발 환경","textShapes":2}
+{"kind":"shape","id":"sh/5o7qpg3e","slide":2,"name":"AutoShape 2","bbox":[0,85,752.52,0]}
+{"kind":"textbox","id":"sh/g3ex0nux","slide":2,"name":"TextBox 3","text":"게임 개요와 개발 환경","textPreview":"게임 개요와 개발 환경","textChars":12,"textLines":1,"bbox":[671.78,54.33,585.43,60.33]}
+{"kind":"shape","id":"sh/r65wjudg","slide":2,"name":"AutoShape 4","bbox":[1176.46,83,743.54,0]}
+{"kind":"textbox","id":"sh/ylc7u54z","slide":2,"name":"TextBox 5","text":"이 프로젝트는 안내서의 조건인 '수학적 원리 혹은 자료구조/알고리즘을 이용한 퍼즐 게임'을 세 개의 서로 다른 퍼즐 규칙으로 구현했습니다.\n\nUnity 버전 - 6000.2.14f1\n타겟 플랫폼 - Windows PC, Standalone Win64 x64\n렌더링/입력 - Universal RP 17.2.0, Unity Input System 1.16.0\n빌드 씬 - MainScene, PipeScene, BitMaskScene, MirrorScene\n기본 해상도 - 1920 x 1080\n핵심 요구 - 3개 이상 스테이지, 난이도 점층, 정확한 성공 판정, 디버그 콘솔과 강제 스킵","textPreview":"이 프로젝트는 안내서의 조건인 '수학적 원리 혹은 자료구조/알고리즘을 이용한 퍼즐 게임'을 세 개의 서로 다른 퍼즐 규칙으로 구현했습니다. |  | Unity 버전 - 6000.2.14f1 | 타겟 플랫폼 - Windows PC, Standalo...","textChars":328,"textLines":8,"bbox":[37.46,196.67,1882.54,749.88]}
+{"kind":"notes","id":"nt/pg3ex0nu","slide":2,"text":""}
+{"kind":"slide","id":"sl/s72x4nap","slide":3,"title":"플레이어 시나리오","textShapes":21}
+{"kind":"textbox","id":"sh/o7qpg3ex","slide":3,"name":"TextBox 2","text":"플레이어 시나리오","textPreview":"플레이어 시나리오","textChars":9,"textLines":1,"bbox":[667.29,42,585.43,68]}
+{"kind":"shape","id":"sh/dsji5sne","slide":3,"name":"AutoShape 3","bbox":[1252.71,83,667.29,0]}
+{"kind":"shape","id":"sh/6dcbulwv","slide":3,"name":"AutoShape 4","bbox":[0,83,667.29,0]}
+{"kind":"textbox","id":"sh/oj2t83it","slide":3,"name":"TextBox 6","text":"플레이어는 스테이지를 선택한 뒤 파이프, 비트마스크, 거울 퍼즐을 각각 해결해 한 스테이지를 클리어합니다.","textPreview":"플레이어는 스테이지를 선택한 뒤 파이프, 비트마스크, 거울 퍼즐을 각각 해결해 한 스테이지를 클리어합니다.","textChars":59,"textLines":1,"bbox":[72.34,157.59,1288.43,42.67]}
+{"kind":"textbox","id":"sh/vahoza1g","slide":3,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[940,438,54,54]}
+{"kind":"textbox","id":"sh/6tovahoz","slide":3,"text":"Stage Select","textPreview":"Stage Select","textChars":12,"textLines":1,"bbox":[890,520,174,74]}
+{"kind":"textbox","id":"sh/epkzupwb","slide":3,"text":"난이도 단계 선택","textPreview":"난이도 단계 선택","textChars":9,"textLines":1,"bbox":[864,612,228,48]}
+{"kind":"shape","id":"sh/7adsji5s","slide":3,"bbox":[1068,548,74,3]}
+{"kind":"textbox","id":"sh/wval87ed","slide":3,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[1170,438,54,54]}
+{"kind":"textbox","id":"sh/pg3ex0nu","slide":3,"text":"Puzzle Select","textPreview":"Puzzle Select","textChars":13,"textLines":1,"bbox":[1120,520,174,74]}
+{"kind":"textbox","id":"sh/e1w7mp0b","slide":3,"text":"미해결 퍼즐 진입","textPreview":"미해결 퍼즐 진입","textChars":9,"textLines":1,"bbox":[1094,612,228,48]}
+{"kind":"shape","id":"sh/7mp0bi9s","slide":3,"bbox":[1298,548,74,3]}
+{"kind":"textbox","id":"sh/w7mp0bi9","slide":3,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[1400,438,54,54]}
+{"kind":"textbox","id":"sh/psfil0rq","slide":3,"text":"Puzzle Clear","textPreview":"Puzzle Clear","textChars":12,"textLines":1,"bbox":[1350,520,174,74]}
+{"kind":"textbox","id":"sh/ed8bat47","slide":3,"text":"각 매니저가 조건 검증","textPreview":"각 매니저가 조건 검증","textChars":12,"textLines":1,"bbox":[1324,612,228,48]}
+{"kind":"shape","id":"sh/7u54zido","slide":3,"bbox":[1528,548,74,3]}
+{"kind":"textbox","id":"sh/twra5gbq","slide":3,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[1630,438,54,54]}
+{"kind":"textbox","id":"sh/4byhgn29","slide":3,"text":"Stage Clear","textPreview":"Stage Clear","textChars":11,"textLines":1,"bbox":[1580,520,174,74]}
+{"kind":"textbox","id":"sh/bq1oryts","slide":3,"text":"3개 clear flag 확인","textPreview":"3개 clear flag 확인","textChars":16,"textLines":1,"bbox":[1554,612,228,48]}
+{"kind":"textbox","id":"sh/m58z25kb","slide":3,"text":"FlowManager.Clear()가 퍼즐 단위 성공을 모으고, 세 퍼즐이 모두 끝나면 스테이지 성공으로 전환합니다.","textPreview":"FlowManager.Clear()가 퍼즐 단위 성공을 모으고, 세 퍼즐이 모두 끝나면 스테이지 성공으로 전환합니다.","textChars":65,"textLines":1,"bbox":[980,752,810,72]}
+{"kind":"textbox","id":"sh/t83itgfm","slide":3,"text":"플레이 흐름","textPreview":"플레이 흐름","textChars":6,"textLines":1,"bbox":[72,300,260,42]}
+{"kind":"textbox","id":"sh/4nap4r65","slide":3,"text":"스테이지 선택 -> 퍼즐 선택 -> 성공 판정 -> 다음 퍼즐","textPreview":"스테이지 선택 -> 퍼즐 선택 -> 성공 판정 -> 다음 퍼즐","textChars":34,"textLines":1,"bbox":[72,360,700,74]}
+{"kind":"textbox","id":"sh/b2hwfyxo","slide":3,"text":"클리어 조건","textPreview":"클리어 조건","textChars":6,"textLines":1,"bbox":[72,486,260,42]}
+{"kind":"textbox","id":"sh/mhk3q5o7","slide":3,"text":"스테이지당 3개 퍼즐\n모든 퍼즐 clear 시 stage clear","textPreview":"스테이지당 3개 퍼즐 | 모든 퍼즐 clear 시 stage clear","textChars":37,"textLines":2,"bbox":[72,546,700,92]}
+{"kind":"textbox","id":"sh/tgfmlkjm","slide":3,"text":"데이터와 디버그","textPreview":"데이터와 디버그","textChars":8,"textLines":1,"bbox":[72,690,320,42]}
+{"kind":"textbox","id":"sh/4vmtwra5","slide":3,"text":"Assets/Resources/*/stage\nScriptableObject stage data\nWriteLog()로 DFS/Ray 상태 출력","textPreview":"Assets/Resources/*/stage | ScriptableObject stage data | WriteLog()로 DFS/Ray 상태 출력","textChars":78,"textLines":3,"bbox":[72,750,730,142]}
+{"kind":"notes","id":"nt/s72x4nap","slide":3,"text":""}
+{"kind":"slide","id":"sl/val87ed8","slide":4,"title":"시스템 아키텍처","textShapes":8}
+{"kind":"shape","id":"sh/qtcj6tov","slide":4,"name":"AutoShape 2","bbox":[0,85,685.05,0]}
+{"kind":"shape","id":"sh/je9cvixc","slide":4,"name":"AutoShape 3","bbox":[1233.31,82,685.69,0]}
+{"kind":"textbox","id":"sh/xs72x4na","slide":4,"name":"TextBox 5","text":"시스템 아키텍처","textPreview":"시스템 아키텍처","textChars":8,"textLines":1,"bbox":[768.31,47.67,383.38,117.31]}
+{"kind":"shape","id":"sh/q1orytsv","slide":4,"bbox":[520,300,860,3]}
+{"kind":"shape","id":"sh/fmlkjm1c","slide":4,"bbox":[960,300,3,140]}
+{"kind":"shape","id":"sh/8jqh0fep","slide":4,"bbox":[515,600,874,3]}
+{"kind":"shape","id":"sh/x4nap4r6","slide":4,"bbox":[960,555,3,95]}
+{"kind":"shape","id":"sh/1w7mp0bi","slide":4,"bbox":[960,742,3,90]}
+{"kind":"textbox","id":"sh/8bat47y1","slide":4,"text":"MainScene\nStage / Puzzle Select","textPreview":"MainScene | Stage / Puzzle Select","textChars":31,"textLines":2,"bbox":[768,188,384,98]}
+{"kind":"textbox","id":"sh/jqh0fepk","slide":4,"text":"FlowManager\nstage, clear flags, scene load","textPreview":"FlowManager | stage, clear flags, scene load","textChars":42,"textLines":2,"bbox":[742,398,436,116]}
+{"kind":"textbox","id":"sh/q5o7qpg3","slide":4,"text":"PipePuzzleManager\nDFS path check","textPreview":"PipePuzzleManager | DFS path check","textChars":32,"textLines":2,"bbox":[302,558,340,108]}
+{"kind":"textbox","id":"sh/18jqh0fe","slide":4,"text":"BitMaskPuzzle\nuint mask operations","textPreview":"BitMaskPuzzle | uint mask operations","textChars":34,"textLines":2,"bbox":[790,558,340,108]}
+{"kind":"textbox","id":"sh/8nqxs72x","slide":4,"text":"MirrorManager\nraycast + reflection","textPreview":"MirrorManager | raycast + reflection","textChars":34,"textLines":2,"bbox":[1278,558,340,108]}
+{"kind":"textbox","id":"sh/j2t83itg","slide":4,"text":"ScriptableObject StageData\nmap, start/end, targets, switch types","textPreview":"ScriptableObject StageData | map, start/end, targets, switch types","textChars":64,"textLines":2,"bbox":[680,760,560,106]}
+{"kind":"textbox","id":"sh/qh0fepkz","slide":4,"text":"각 퍼즐은 자체 규칙으로 성공 조건을 검증하고, 성공 결과만 FlowManager에 전달합니다.","textPreview":"각 퍼즐은 자체 규칙으로 성공 조건을 검증하고, 성공 결과만 FlowManager에 전달합니다.","textChars":53,"textLines":1,"bbox":[420,938,1080,64]}
+{"kind":"notes","id":"nt/val87ed8","slide":4,"text":""}
+{"kind":"slide","id":"sl/mlkjm1cf","slide":5,"title":"게임 흐름 관리 구조","textShapes":2}
+{"kind":"shape","id":"sh/ovahoza1","slide":5,"name":"AutoShape 2","bbox":[0,85,752.52,0]}
+{"kind":"textbox","id":"sh/dg7adsji","slide":5,"name":"TextBox 3","text":"게임 흐름 관리 구조","textPreview":"게임 흐름 관리 구조","textChars":11,"textLines":1,"bbox":[671.78,54.33,585.43,118.33]}
+{"kind":"shape","id":"sh/6hcrmhk3","slide":5,"name":"AutoShape 4","bbox":[1176.46,83,743.54,0]}
+{"kind":"textbox","id":"sh/z25kb6xk","slide":5,"text":"• FlowManager Singleton - DontDestroyOnLoad로 스테이지와 퍼즐 진행 상태를 유지\n• Scene table - PipeScene, BitMaskScene, MirrorScene, MainScene을 인덱스로 관리\n• SelectStage(newStage) - 퍼즐 clear flag를 초기화하고 퍼즐 선택 화면으로 전환\n• GoPuzzle(puzzle) / RequestScene(newSceneNum) - 클리어한 퍼즐 재진입을 막고 씬 로드\n• Clear() - 현재 퍼즐 clear flag를 true로 바꾸고 3개 퍼즐 완료 시 stage clear 처리\n• Debug tools - WriteLog()와 skip()으로 상태 출력 및 강제 클리어 테스트","textPreview":"• FlowManager Singleton - DontDestroyOnLoad로 스테이지와 퍼즐 진행 상태를 유지 | • Scene table - PipeScene, BitMaskScene, MirrorScene, MainScene을 인덱스로 관...","textChars":389,"textLines":6,"bbox":[88,228,1700,540]}
+{"kind":"notes","id":"nt/mlkjm1cf","slide":5,"text":""}
+{"kind":"slide","id":"sl/58z25kb6","slide":6,"title":"퍼즐별 핵심 구현 기술","textShapes":7}
+{"kind":"shape","id":"sh/ylc7u54z","slide":6,"name":"AutoShape 2","bbox":[0,85,795.49,0]}
+{"kind":"textbox","id":"sh/r65wjudg","slide":6,"name":"TextBox 3","text":"퍼즐별 핵심 구현 기술","textPreview":"퍼즐별 핵심 구현 기술","textChars":12,"textLines":1,"bbox":[667.29,54.33,585.43,60.33]}
+{"kind":"textbox","id":"sh/g3ex0nux","slide":6,"name":"TextBox 4","text":"파이프 퍼즐 - 회전 블록과 DFS 경로 검증","textPreview":"파이프 퍼즐 - 회전 블록과 DFS 경로 검증","textChars":25,"textLines":1,"bbox":[58.59,171.27,1165.16,44.79]}
+{"kind":"textbox","id":"sh/5o7qpg3e","slide":6,"name":"TextBox 5","text":"BlockKind별 기본 연결 방향을 정의하고, angle 값으로 현재 열린 방향을 계산합니다. CheckClear()는 startCell에서 DFS를 수행해 모든 goalCell 방문 여부를 확인합니다.","textPreview":"BlockKind별 기본 연결 방향을 정의하고, angle 값으로 현재 열린 방향을 계산합니다. CheckClear()는 startCell에서 DFS를 수행해 모든 goalCell 방문 여부를 확인합니다.","textChars":114,"textLines":1,"bbox":[58.59,251.94,1669.85,85.31]}
+{"kind":"textbox","id":"sh/yxobm58z","slide":6,"name":"TextBox 6","text":"비트마스크 퍼즐 - 5개 전등을 uint 상태로 압축","textPreview":"비트마스크 퍼즐 - 5개 전등을 uint 상태로 압축","textChars":29,"textLines":1,"bbox":[58.59,372.34,1002.84,44.79]}
+{"kind":"textbox","id":"sh/nih4byhg","slide":6,"name":"TextBox 7","text":"curState의 하위 5비트를 전등 상태로 사용하고 switchMasks를 XOR, OR, AND로 적용합니다. ClearMask(0b11111)와 비교해 클리어 여부를 즉시 판정합니다.","textPreview":"curState의 하위 5비트를 전등 상태로 사용하고 switchMasks를 XOR, OR, AND로 적용합니다. ClearMask(0b11111)와 비교해 클리어 여부를 즉시 판정합니다.","textChars":105,"textLines":1,"bbox":[58.59,452.94,1386.97,85.31]}
+{"kind":"textbox","id":"sh/g7adsji5","slide":6,"name":"TextBox 8","text":"거울 퍼즐 - Raycast 기반 반사와 프리즘 분기","textPreview":"거울 퍼즐 - Raycast 기반 반사와 프리즘 분기","textChars":29,"textLines":1,"bbox":[58.59,531.34,1002.84,44.79]}
+{"kind":"textbox","id":"sh/9s36hcrm","slide":6,"name":"TextBox 9","text":"RayLine은 가장 가까운 충돌체를 찾고, Mirror에서는 r = d - 2(d·n)n 공식으로 반사 방향을 계산합니다. Prism은 Red, Green, Blue 광선을 새로 생성합니다.","textPreview":"RayLine은 가장 가까운 충돌체를 찾고, Mirror에서는 r = d - 2(d·n)n 공식으로 반사 방향을 계산합니다. Prism은 Red, Green, Blue 광선을 새로 생성합니다.","textChars":107,"textLines":1,"bbox":[58.59,612,1404.57,85.31]}
+{"kind":"notes","id":"nt/58z25kb6","slide":6,"text":""}
+{"kind":"slide","id":"sl/0z61032l","slide":7,"title":"스테이지 데이터 중심 설계","textShapes":12}
+{"kind":"shape","id":"sh/x4nap4r6","slide":7,"name":"AutoShape 2","bbox":[0,85,752.52,0]}
+{"kind":"textbox","id":"sh/8jqh0fep","slide":7,"name":"TextBox 3","text":"스테이지 데이터 중심 설계","textPreview":"스테이지 데이터 중심 설계","textChars":14,"textLines":1,"bbox":[671.78,54.33,585.43,117.31]}
+{"kind":"textbox","id":"sh/fa9w3m94","slide":7,"text":"스테이지 데이터 설계","textPreview":"스테이지 데이터 설계","textChars":11,"textLines":1,"bbox":[654,52,612,68]}
+{"kind":"textbox","id":"sh/qpg3ex0n","slide":7,"text":"PipeStageData","textPreview":"PipeStageData","textChars":13,"textLines":1,"bbox":[130,216,360,72]}
+{"kind":"textbox","id":"sh/xczed8v6","slide":7,"text":"map, mapSize, start, end, fixedBlocks","textPreview":"map, mapSize, start, end, fixedBlocks","textChars":37,"textLines":1,"bbox":[540,230,1100,52]}
+{"kind":"textbox","id":"sh/8v6psfil","slide":7,"text":"bitMaskData","textPreview":"bitMaskData","textChars":11,"textLines":1,"bbox":[130,344,360,72]}
+{"kind":"textbox","id":"sh/je9cvixc","slide":7,"text":"switchType, switchInfo로 스위치별 비트 마스크 생성","textPreview":"switchType, switchInfo로 스위치별 비트 마스크 생성","textChars":38,"textLines":1,"bbox":[540,358,1100,52]}
+{"kind":"textbox","id":"sh/qtcj6tov","slide":7,"text":"MirrorStageData","textPreview":"MirrorStageData","textChars":15,"textLines":1,"bbox":[130,472,360,72]}
+{"kind":"textbox","id":"sh/svu9knih","slide":7,"text":"map, targets, rayStartPoint, rayStartDir","textPreview":"map, targets, rayStartPoint, rayStartDir","textChars":40,"textLines":1,"bbox":[540,486,1100,52]}
+{"kind":"textbox","id":"sh/hgn29gr2","slide":7,"text":"난이도 증가","textPreview":"난이도 증가","textChars":6,"textLines":1,"bbox":[130,600,360,72]}
+{"kind":"textbox","id":"sh/ap4r65wj","slide":7,"text":"기본 규칙 -> 고정/추가 목표 -> OR/AND/프리즘","textPreview":"기본 규칙 -> 고정/추가 목표 -> OR/AND/프리즘","textChars":31,"textLines":1,"bbox":[540,614,1100,52]}
+{"kind":"textbox","id":"sh/za1gvy90","slide":7,"text":"재사용 구조","textPreview":"재사용 구조","textChars":6,"textLines":1,"bbox":[130,728,360,72]}
+{"kind":"textbox","id":"sh/s36hcrmh","slide":7,"text":"Resources/Prefab 기반 생성, 매니저 로직은 유지","textPreview":"Resources/Prefab 기반 생성, 매니저 로직은 유지","textChars":34,"textLines":1,"bbox":[540,742,1100,52]}
+{"kind":"notes","id":"nt/0z61032l","slide":7,"text":""}
+{"kind":"slide","id":"sl/fu18jqh0","slide":8,"title":"DFS 중복 방문 해결","textShapes":12}
+{"kind":"shape","id":"sh/u9knih4b","slide":8,"name":"AutoShape 2","bbox":[0,85,739.92,0]}
+{"kind":"shape","id":"sh/judg7ads","slide":8,"name":"AutoShape 3","bbox":[1167.47,83,752.53,0]}
+{"kind":"textbox","id":"sh/c7u54zid","slide":8,"text":"DFS 중복 방문 해결","textPreview":"DFS 중복 방문 해결","textChars":12,"textLines":1,"bbox":[704,54,512,68]}
+{"kind":"textbox","id":"sh/1orytsvu","slide":8,"text":"문제","textPreview":"문제","textChars":2,"textLines":1,"bbox":[108,154,210,74]}
+{"kind":"textbox","id":"sh/u18jqh0f","slide":8,"text":"DFS 중 같은 셀이 반복 방문되어 경로 판정 로그가 흔들렸습니다.","textPreview":"DFS 중 같은 셀이 반복 방문되어 경로 판정 로그가 흔들렸습니다.","textChars":37,"textLines":1,"bbox":[350,166,1350,52]}
+{"kind":"textbox","id":"sh/jm1cfa9w","slide":8,"text":"1. 로그로 재현","textPreview":"1. 로그로 재현","textChars":9,"textLines":1,"bbox":[140,312,500,74]}
+{"kind":"textbox","id":"sh/cvixczed","slide":8,"text":"WriteLog()로 DFS stack을 매 탐색마다 출력","textPreview":"WriteLog()로 DFS stack을 매 탐색마다 출력","textChars":32,"textLines":1,"bbox":[160,418,460,110]}
+{"kind":"textbox","id":"sh/5gbq1ory","slide":8,"text":"2. 원인 특정","textPreview":"2. 원인 특정","textChars":8,"textLines":1,"bbox":[720,312,500,74]}
+{"kind":"textbox","id":"sh/18jqh0fe","slide":8,"text":"visited 처리와 pop 시점이 섞여 중복 push 발생","textPreview":"visited 처리와 pop 시점이 섞여 중복 push 발생","textChars":33,"textLines":1,"bbox":[740,418,460,110]}
+{"kind":"textbox","id":"sh/8nqxs72x","slide":8,"text":"3. 구조 수정","textPreview":"3. 구조 수정","textChars":8,"textLines":1,"bbox":[1300,312,500,74]}
+{"kind":"textbox","id":"sh/j2t83itg","slide":8,"text":"blocks, visited를 2차원 배열로 관리하고 push 전에 방문 검사","textPreview":"blocks, visited를 2차원 배열로 관리하고 push 전에 방문 검사","textChars":43,"textLines":1,"bbox":[1320,418,460,110]}
+{"kind":"textbox","id":"sh/qh0fepkz","slide":8,"text":"DFS stack log","textPreview":"DFS stack log","textChars":13,"textLines":1,"bbox":[270,640,620,54]}
+{"kind":"textbox","id":"sh/1w7mp0bi","slide":8,"text":"DFS stack: [(0,0)]\nDFS stack: [(0,1) (1,0)]\nskip visited cell -> push next only once\ngoal reached: (3,5)","textPreview":"DFS stack: [(0,0)] | DFS stack: [(0,1) (1,0)] | skip visited cell -> push next only once | goal reached: (3,5)","textChars":104,"textLines":4,"bbox":[316,724,550,160]}
+{"kind":"textbox","id":"sh/8bat47y1","slide":8,"text":"결과\n중복 방문 제거\n목표 셀 도달만 판정","textPreview":"결과 | 중복 방문 제거 | 목표 셀 도달만 판정","textChars":23,"textLines":3,"bbox":[1050,646,540,200]}
+{"kind":"notes","id":"nt/fu18jqh0","slide":8,"text":""}
+{"kind":"slide","id":"sl/qh0fepkz","slide":9,"title":"난이도 설계 문제 해결","textShapes":15}
+{"kind":"shape","id":"sh/ovahoza1","slide":9,"name":"AutoShape 2","bbox":[0,85,653.86,0]}
+{"kind":"shape","id":"sh/dg7adsji","slide":9,"name":"AutoShape 3","bbox":[1249.99,83,670.01,0]}
+{"kind":"textbox","id":"sh/6hcrmhk3","slide":9,"text":"난이도 설계 문제 해결","textPreview":"난이도 설계 문제 해결","textChars":12,"textLines":1,"bbox":[654,54,612,68]}
+{"kind":"textbox","id":"sh/z25kb6xk","slide":9,"text":"XOR만으로는 stage 2, 3의 난이도 상승이 충분하지 않아 스위치 규칙을 확장했습니다.","textPreview":"XOR만으로는 stage 2, 3의 난이도 상승이 충분하지 않아 스위치 규칙을 확장했습니다.","textChars":51,"textLines":1,"bbox":[100,146,1720,54]}
+{"kind":"textbox","id":"sh/onyd0z61","slide":9,"text":"Before\nXOR only","textPreview":"Before | XOR only","textChars":15,"textLines":2,"bbox":[210,292,620,96]}
+{"kind":"textbox","id":"sh/d8v6psfi","slide":9,"text":"After\nXOR + OR + AND","textPreview":"After | XOR + OR + AND","textChars":20,"textLines":2,"bbox":[1090,292,620,96]}
+{"kind":"shape","id":"sh/6dcbulwv","slide":9,"bbox":[210,438,620,286]}
+{"kind":"textbox","id":"sh/vy90je9c","slide":9,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[395,516,40,40]}
+{"kind":"textbox","id":"sh/nuxc3ylc","slide":9,"text":"0","textPreview":"0","textChars":1,"textLines":1,"bbox":[443,516,40,40]}
+{"kind":"textbox","id":"sh/y90je9cv","slide":9,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[491,516,40,40]}
+{"kind":"textbox","id":"sh/5wjudg7a","slide":9,"text":"0","textPreview":"0","textChars":1,"textLines":1,"bbox":[539,516,40,40]}
+{"kind":"textbox","id":"sh/gbq1oryt","slide":9,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[587,516,40,40]}
+{"kind":"textbox","id":"sh/n29gr2p8","slide":9,"text":"전등을 토글하는 풀이 패턴이\n반복되어 전략 폭이 좁아짐","textPreview":"전등을 토글하는 풀이 패턴이 | 반복되어 전략 폭이 좁아짐","textChars":30,"textLines":2,"bbox":[300,614,440,72]}
+{"kind":"shape","id":"sh/yhgn29gr","slide":9,"bbox":[882,572,150,7]}
+{"kind":"shape","id":"sh/58z25kb6","slide":9,"bbox":[1090,438,620,286]}
+{"kind":"textbox","id":"sh/gn29gr2p","slide":9,"text":"XOR","textPreview":"XOR","textChars":3,"textLines":1,"bbox":[1166,512,130,54]}
+{"kind":"textbox","id":"sh/neloj2t8","slide":9,"text":"OR","textPreview":"OR","textChars":2,"textLines":1,"bbox":[1332,512,130,54]}
+{"kind":"textbox","id":"sh/ytsvu9kn","slide":9,"text":"AND","textPreview":"AND","textChars":3,"textLines":1,"bbox":[1498,512,130,54]}
+{"kind":"textbox","id":"sh/2x4nap4r","slide":9,"text":"연산 성질이 달라져 stage별로\n다른 추론과 순서 판단이 필요해짐","textPreview":"연산 성질이 달라져 stage별로 | 다른 추론과 순서 판단이 필요해짐","textChars":37,"textLines":2,"bbox":[1162,614,478,72]}
+{"kind":"textbox","id":"sh/vixczed8","slide":9,"text":"추가 수정: 전등 상태 표시는 setActive 대신 Image.color로 관리해 켜짐/꺼짐을 명확히 표시했습니다.","textPreview":"추가 수정: 전등 상태 표시는 setActive 대신 Image.color로 관리해 켜짐/꺼짐을 명확히 표시했습니다.","textChars":65,"textLines":1,"bbox":[245,812,1430,54]}
+{"kind":"notes","id":"nt/qh0fepkz","slide":9,"text":""}
+{"kind":"slide","id":"sl/29gr2p8n","slide":10,"title":"레이저 판정 문제 해결","textShapes":11}
+{"kind":"shape","id":"sh/9gr2p8nq","slide":10,"name":"AutoShape 2","bbox":[0,85,653.86,0]}
+{"kind":"shape","id":"sh/gvy90je9","slide":10,"name":"AutoShape 3","bbox":[1249.99,83,670.01,0]}
+{"kind":"textbox","id":"sh/r2p8nqxs","slide":10,"text":"레이저 판정 문제 해결","textPreview":"레이저 판정 문제 해결","textChars":12,"textLines":1,"bbox":[654,54,612,68]}
+{"kind":"textbox","id":"sh/2hwfyxob","slide":10,"text":"보이는 그래픽과 Collider2D 크기 차이를 맞춰 Raycast 경로가 안정적으로 그려지도록 수정했습니다.","textPreview":"보이는 그래픽과 Collider2D 크기 차이를 맞춰 Raycast 경로가 안정적으로 그려지도록 수정했습니다.","textChars":61,"textLines":1,"bbox":[94,146,1728,54]}
+{"kind":"textbox","id":"sh/94fu18jq","slide":10,"text":"문제\n레이저가 거울, 벽, 프리즘, 목표 지점을 지나가도 충돌 판정이 나지 않고 LineRenderer가 그려지지 않았습니다.\n\n원인\nCollider2D 크기가 보이는 스프라이트보다 작아 Raycast hit 목록에 들어오지 않았고, points 개수가 부족했습니다.\n\n해결\nCollider 크기와 배치를 시각 요소에 맞추고, hit 로그로 충돌 지점을 확인했습니다. 거울 회전 직후에는 Physics2D.SyncTransforms() 후 DrawRay()를 호출합니다.","textPreview":"문제 | 레이저가 거울, 벽, 프리즘, 목표 지점을 지나가도 충돌 판정이 나지 않고 LineRenderer가 그려지지 않았습니다. |  | 원인 | Collider2D 크기가 보이는 스프라이트보다 작아 Raycast hit 목록에 들어오지 않았고...","textChars":263,"textLines":8,"bbox":[96,250,820,520]}
+{"kind":"shape","id":"sh/kjm1cfa9","slide":10,"bbox":[1044,246,760,650]}
+{"kind":"textbox","id":"sh/rqd4vmtw","slide":10,"text":"Before","textPreview":"Before","textChars":6,"textLines":1,"bbox":[1130,304,220,42]}
+{"kind":"textbox","id":"sh/25kb6xkf","slide":10,"text":"After","textPreview":"After","textChars":5,"textLines":1,"bbox":[1500,304,220,42]}
+{"kind":"textbox","id":"sh/4fu18jqh","slide":10,"text":"visible sprite","textPreview":"visible sprite","textChars":14,"textLines":1,"bbox":[1104,390,260,110]}
+{"kind":"textbox","id":"sh/x0nuxc3y","slide":10,"text":"collider","textPreview":"collider","textChars":8,"textLines":1,"bbox":[1172,420,120,48]}
+{"kind":"shape","id":"sh/m94fu18j","slide":10,"bbox":[1080,550,330,5]}
+{"kind":"textbox","id":"sh/fu18jqh0","slide":10,"text":"시각 영역은 지나가지만\ncollider를 놓쳐 hit 없음","textPreview":"시각 영역은 지나가지만 | collider를 놓쳐 hit 없음","textChars":32,"textLines":2,"bbox":[1088,612,322,72]}
+{"kind":"textbox","id":"sh/83itgfml","slide":10,"text":"sprite = collider","textPreview":"sprite = collider","textChars":17,"textLines":1,"bbox":[1474,390,260,110]}
+{"kind":"shape","id":"sh/xobm58z2","slide":10,"bbox":[1442,445,340,5]}
+{"kind":"textbox","id":"sh/qxs72x4n","slide":10,"text":"hit.point 확보\npoints >= 2\nLineRenderer 출력","textPreview":"hit.point 확보 | points >= 2 | LineRenderer 출력","textChars":40,"textLines":3,"bbox":[1452,612,322,94]}
+{"kind":"textbox","id":"sh/fil0rqd4","slide":10,"text":"Mirror.CalculateReflection()\nRayLine.CalculateWay()\nTarget.isClear","textPreview":"Mirror.CalculateReflection() | RayLine.CalculateWay() | Target.isClear","textChars":66,"textLines":3,"bbox":[1222,762,410,92]}
+{"kind":"notes","id":"nt/29gr2p8n","slide":10,"text":""}
+{"kind":"slide","id":"sl/re1w7mp0","slide":11,"title":"Q&A","textShapes":3}
+{"kind":"textbox","id":"sh/6tovahoz","slide":11,"name":"TextBox 2","text":"Q&A","textPreview":"Q&A","textChars":3,"textLines":1,"bbox":[1369.94,626.66,409.05,59.33]}
+{"kind":"textbox","id":"sh/vahoza1g","slide":11,"name":"TextBox 3","text":"CK_project","textPreview":"CK_project","textChars":10,"textLines":1,"bbox":[1635.08,751.34,143.91,73.31]}
+{"kind":"textbox","id":"sh/onyd0z61","slide":11,"name":"TextBox 4","text":"Unity 6000.2.14f1\nStandalone Win64 x64\nPipe + BitMask + Mirror Puzzle","textPreview":"Unity 6000.2.14f1 | Standalone Win64 x64 | Pipe + BitMask + Mirror Puzzle","textChars":69,"textLines":3,"bbox":[1540.39,817.58,238.59,153.6]}
+{"kind":"notes","id":"nt/re1w7mp0","slide":11,"text":""}

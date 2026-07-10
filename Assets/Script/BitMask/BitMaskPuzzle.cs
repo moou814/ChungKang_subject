@@ -28,7 +28,7 @@ public class BitMaskPuzzle : MonoBehaviour
 
     [FormerlySerializedAs("puzzleB")]
     [SerializeField] private Transform puzzleRoot;
-    [SerializeField] private BitMaskStageData[] stageData;
+    [SerializeField] private bitMaskData[] stageData;
 
     public int stage;
 
@@ -59,7 +59,7 @@ public class BitMaskPuzzle : MonoBehaviour
             return;
         }
 
-        BitMaskStageData data = stageData[stage];
+        bitMaskData data = stageData[stage];
         int switchCount = data.switchInfo.Length / LightCount;
 
         switchMasks = new uint[switchCount];
@@ -71,7 +71,7 @@ public class BitMaskPuzzle : MonoBehaviour
 
             BitMaskSwitch bitSwitch = switchObj.GetComponent<BitMaskSwitch>();
             bitSwitch.switchNum = j;
-            bitSwitch.type = data.switchTypes[j];
+            bitSwitch.type = data.switchType[j];
 
             // switchInfo는 스위치당 LightCount개의 bool을 이어 붙인 배열.
             // true인 자리의 비트를 세워 스위치의 비트마스크를 만든다.
