@@ -79,6 +79,8 @@ public class FlowManager : MonoBehaviour
     {
         WriteLog($"stage{stage} {sceneNames[curSceneNum]} | skip");
 
+        SoundManager.Instance.soundEffect(0);
+
         if (curSceneNum != 3)
             Clear();
     }
@@ -105,6 +107,9 @@ public class FlowManager : MonoBehaviour
 
         stageSelectPanel.SetActive(false);
         puzzleSelectPanel.SetActive(true);
+
+        SoundManager.Instance.soundEffect(0);
+
     }
 
     /// <summary>퍼즐 선택 버튼에서 호출. 이미 클리어한 퍼즐이면 무시한다.</summary>
@@ -114,6 +119,8 @@ public class FlowManager : MonoBehaviour
         if (isPuzzleClear[puzzle]) return;
 
         RequestScene(puzzle);
+
+        SoundManager.Instance.soundEffect(0);
     }
 
     /// <summary>씬 전환. 메인 씬으로 돌아올 때는 퍼즐 선택 패널을 다시 띄운다.</summary>
@@ -123,7 +130,7 @@ public class FlowManager : MonoBehaviour
 
         clearPanel.SetActive(false);
         
-        if (isStageClear[stage]) puzzleSelectPanel.SetActive(newSceneNum == MainSceneIndex);
+        if (!isStageClear[stage]) puzzleSelectPanel.SetActive(newSceneNum == MainSceneIndex);
         else stageSelectPanel.SetActive(newSceneNum == MainSceneIndex);
 
         skipButton.SetActive(newSceneNum == 3 ? false : true);
@@ -146,6 +153,8 @@ public class FlowManager : MonoBehaviour
             isStageClear[stage] = true;
             WriteLog($"Stage {stage} All Clear!");
         }
+
+        SoundManager.Instance.soundEffect(1);
     }
 
     #endregion

@@ -29,8 +29,10 @@ public class PipePuzzleBlock : MonoBehaviour
 
     /// <summary>UI Button onClick에 연결된다. 회전 후 매니저에게 연결 상태 재검사를 요청한다.</summary>
     public void Turn()
-    {
+    {   
         if (isFixed) return;
+
+        SoundManager.Instance.soundEffect(0);
 
         angle = (angle + 1) % 4;
         transform.Rotate(0, 0, -90);

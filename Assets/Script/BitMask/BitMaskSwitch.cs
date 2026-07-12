@@ -9,6 +9,8 @@ public class BitMaskSwitch : MonoBehaviour
     /// <summary>UI Button onClick에 연결된다.</summary>
     public void Press()
     {
+        SoundManager.Instance.soundEffect(0);
+
         BitMaskPuzzle.Instance.ApplySwitch(switchNum, type);
     }
 }
